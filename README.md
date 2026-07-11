@@ -38,21 +38,52 @@ Build Aster:
 autoninja -C out\Default chrome
 ```
 
+The Windows build target remains `chrome` for Chromium build compatibility, but
+the generated browser executable is:
+
+```text
+C:\chromium\src\out\Default\aster.exe
+```
+
 Run the browser:
 
 ```powershell
-out\Default\chrome.exe --user-data-dir=C:\chromium\test-profile
+out\Default\aster.exe --user-data-dir=C:\chromium\test-profile
 ```
+
+## Logo Assets
+
+The Aster logo is generated and installed by:
+
+```powershell
+python tools\prepare_aster_logo.py "C:\path\to\aster-logo.png" --src-root C:\chromium\src
+```
+
+The script creates a transparent 1024x1024 master image, PNG assets at
+16/24/32/48/64/128/256 pixels, and a real multi-size ICO. It searches the
+current Chromium checkout for product logo PNGs and `chromium.ico`, backs up
+the originals under `branding\backup\<timestamp>\`, then replaces only matching
+logo resources.
+
+## Aster Identity
+
+The patch set currently applies:
+
+- Product-facing name: `Aster`
+- Maintainer/developer identity: `Aster Team`
+- Display version in `chrome://version` and Settings About: `1.0.0.0`
+- Windows browser executable output: `aster.exe`
 
 ## Verification
 
 After building, open `chrome://version`. The application label should show
-`Aster`, and the About copyright resources should resolve to Aster Team.
+`Aster`, the displayed version should be `1.0.0.0`, and the About copyright
+resources should resolve to Aster Team.
 
 The latest local build output is:
 
 ```text
-C:\chromium\src\out\Default\chrome.exe
+C:\chromium\src\out\Default\aster.exe
 ```
 
 ## Development
