@@ -65,6 +65,10 @@ current Chromium checkout for product logo PNGs and `chromium.ico`, backs up
 the originals under `branding\backup\<timestamp>\`, then replaces only matching
 logo resources.
 
+The script also prepares Windows shell-facing assets so the Aster logo is used
+for the running app, taskbar grouping, Start menu and desktop shortcuts,
+document icons, tile images, WebUI SVG logos, and profile shortcut regeneration.
+
 ## Aster Identity
 
 The patch set currently applies:
@@ -73,6 +77,9 @@ The patch set currently applies:
 - Maintainer/developer identity: `Aster Team`
 - Display version in `chrome://version` and Settings About: `1.0.0.0`
 - Windows browser executable output: `aster.exe`
+- Windows AppUserModelID/install identity: `Aster`
+- Startup Google API key warning: disabled for Aster builds
+- Settings About logo click animation: disabled
 
 ## Verification
 
