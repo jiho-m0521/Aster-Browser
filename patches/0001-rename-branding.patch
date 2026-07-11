@@ -1,25 +1,130 @@
-From 09c48ef8e51328c3fc12612d687dfaf8ef36fad3 Mon Sep 17 00:00:00 2001
-From: Jiho Min <jiho@mjiho.com>
-Date: Sat, 11 Jul 2026 16:55:37 +0900
-Subject: [PATCH] Rename Chromium branding
+diff --git a/README.md b/README.md
+index 590f4c94f2..d53318d753 100644
+--- a/README.md
++++ b/README.md
+@@ -1,21 +1,96 @@
+-# ![Logo](chrome/app/theme/chromium/product_logo_64.png) Chromium
++# Aster Browser
 
----
- chrome/app/chromium_strings.grd    | 1264 ++++++++++++++--------------
- chrome/app/theme/chromium/BRANDING |   16 +-
- 2 files changed, 640 insertions(+), 640 deletions(-)
+-Chromium is an open-source browser project that aims to build a safer, faster,
+-and more stable way for all users to experience the web.
++[![Contributors][contributors-shield]][contributors-url]
++[![Forks][forks-shield]][forks-url]
++[![Stars][stars-shield]][stars-url]
++[![Issues][issues-shield]][issues-url]
++[![License][license-shield]][license-url]
 
+-The project's web site is https://www.chromium.org.
++Aster Browser is a Chromium-based browser project maintained by Aster Team.
++The project keeps Chromium's web platform foundation while replacing the
++browser-facing identity with Aster.
+
+-To check out the source code locally, don't use `git clone`! Instead,
+-follow [the instructions on how to get the code](docs/get_the_code.md).
++## Repository
+
+-Documentation in the source is rooted in [docs/README.md](docs/README.md).
++- Project: [jiho-m0521/Aster-Browser](https://github.com/jiho-m0521/Aster-Browser)
++- Maintainer: [Aster Team](https://github.com/jiho-m0521/Aster-Browser)
++- Upstream base: [Chromium](https://www.chromium.org/)
+
+-Learn how to [Get Around the Chromium Source Code Directory
+-Structure](https://www.chromium.org/developers/how-tos/getting-around-the-chrome-source-code).
++## What Changed
+
+-For historical reasons, there are some small top level directories. Now the
+-guidance is that new top level directories are for product (e.g. Chrome,
+-Android WebView, Ash). Even if these products have multiple executables, the
+-code should be in subdirectories of the product.
++- Product name and short name are branded as `Aster`.
++- Browser UI strings such as About, update status, default browser prompts, and
++  related settings copy use Aster naming.
++- Product metadata uses `Aster Team`.
++- The About copyright string is `Copyright 2026 Aster Team. All rights reserved.`
+
+-If you found a bug, please file it at https://crbug.com/new.
++## Getting Started
++
++This repository follows the Chromium checkout and build flow. For a fresh
++checkout, use Chromium's depot_tools workflow rather than a plain `git clone`.
++
++```powershell
++gclient sync
++```
++
++Generate build files:
++
++```powershell
++$env:DEPOT_TOOLS_WIN_TOOLCHAIN = "0"
++$env:GYP_MSVS_OVERRIDE_PATH = "C:\Program Files\Microsoft Visual Studio\18\Insiders"
++gn gen out\Default
++```
++
++Build Aster:
++
++```powershell
++autoninja -C out\Default chrome
++```
++
++Run the browser:
++
++```powershell
++out\Default\chrome.exe --user-data-dir=C:\chromium\test-profile
++```
++
++## Verification
++
++After building, open `chrome://version`. The application label should show
++`Aster`.
++
++The current Windows build output is expected under:
++
++```text
++C:\chromium\src\out\Default\chrome.exe
++```
++
++## Contributing
++
++Use feature branches and send changes to:
++
++```text
++https://github.com/jiho-m0521/Aster-Browser
++```
++
++Suggested local remote setup:
++
++```powershell
++git remote add upstream https://chromium.googlesource.com/chromium/src.git
++git remote set-url origin https://github.com/jiho-m0521/Aster-Browser.git
++```
++
++## License
++
++Aster Browser is based on Chromium and retains Chromium's open-source license
++notices. See [LICENSE](LICENSE) for details.
++
++[contributors-shield]: https://img.shields.io/github/contributors/jiho-m0521/Aster-Browser.svg?style=for-the-badge
++[contributors-url]: https://github.com/jiho-m0521/Aster-Browser/graphs/contributors
++[forks-shield]: https://img.shields.io/github/forks/jiho-m0521/Aster-Browser.svg?style=for-the-badge
++[forks-url]: https://github.com/jiho-m0521/Aster-Browser/network/members
++[stars-shield]: https://img.shields.io/github/stars/jiho-m0521/Aster-Browser.svg?style=for-the-badge
++[stars-url]: https://github.com/jiho-m0521/Aster-Browser/stargazers
++[issues-shield]: https://img.shields.io/github/issues/jiho-m0521/Aster-Browser.svg?style=for-the-badge
++[issues-url]: https://github.com/jiho-m0521/Aster-Browser/issues
++[license-shield]: https://img.shields.io/github/license/jiho-m0521/Aster-Browser.svg?style=for-the-badge
++[license-url]: https://github.com/jiho-m0521/Aster-Browser/blob/main/LICENSE
 diff --git a/chrome/app/chromium_strings.grd b/chrome/app/chromium_strings.grd
-index e88d88f166..8297ead20e 100644
+index e88d88f166..4ee3c46312 100644
 --- a/chrome/app/chromium_strings.grd
 +++ b/chrome/app/chromium_strings.grd
 @@ -278,7 +278,7 @@ If you update this file, be sure also to update google_chrome_strings.grd. -->
- 
+
        <!--
          Even though Google Chrome for Testing is a separate brand, there is
 -        no separate file for it. Instead, we use the same file as Chromium, with
 +        no separate file for it. Instead, we use the same file as Aster, with
          a few select overrides for the most prominent end-user strings.
- 
+
          Rationale: https://goo.gle/chrome-for-testing#bookmark=id.n1rat320av91
 @@ -294,30 +294,30 @@ If you update this file, be sure also to update google_chrome_strings.grd. -->
          </then>
@@ -104,7 +209,7 @@ index e88d88f166..8297ead20e 100644
          <message name="IDS_CHROME_SIGNOUT_CONFIRMATION_PROMPT_TOO_MANY_BOOKMARKS_BODY" desc="Body of the signout confirmation dialog when the user has too many bookmarks.">
 -        You reached Chromium’s limit of <ph name="BOOKMARK_LIMIT">$1<ex>100,000</ex></ph> bookmarks, so some of your bookmarks haven’t been saved in your Google Account yet.
 +        You reached Aster’s limit of <ph name="BOOKMARK_LIMIT">$1<ex>100,000</ex></ph> bookmarks, so some of your bookmarks haven’t been saved in your Google Account yet.
- 
+
  New bookmarks can’t be saved in your account until you delete some. If you sign out now, unsaved bookmarks will be deleted.
          </message>
        </if>
@@ -112,7 +217,7 @@ index e88d88f166..8297ead20e 100644
          <message name="IDS_CHROME_SIGNOUT_CONFIRMATION_PROMPT_TOO_MANY_BOOKMARKS_BODY" desc="Body of the signout confirmation dialog when the user has too many bookmarks." formatter_data="android_java">
 -        You reached Chromium’s limit of <ph name="BOOKMARK_LIMIT">%1$s<ex>100,000</ex></ph> bookmarks, so some of your bookmarks haven’t been saved in your Google Account yet.
 +        You reached Aster’s limit of <ph name="BOOKMARK_LIMIT">%1$s<ex>100,000</ex></ph> bookmarks, so some of your bookmarks haven’t been saved in your Google Account yet.
- 
+
  New bookmarks can’t be saved in your account until you delete some. If you sign out now, unsaved bookmarks will be deleted.
          </message>
 @@ -415,7 +415,7 @@ New bookmarks can’t be saved in your account until you delete some. If you sig
@@ -179,7 +284,17 @@ index e88d88f166..8297ead20e 100644
        </message>
        <if expr="_is_chrome_for_testing_branded">
          <then>
-@@ -514,14 +514,14 @@ New bookmarks can’t be saved in your account until you delete some. If you sig
+@@ -506,22 +506,22 @@ New bookmarks can’t be saved in your account until you delete some. If you sig
+         </then>
+         <else>
+           <message name="IDS_ABOUT_VERSION_COMPANY_NAME" desc="Company name on the about pages">
+-            The Chromium Authors
++            Aster Team
+           </message>
+           <message name="IDS_ABOUT_VERSION_COPYRIGHT" desc="Copyright information on the about pages">
+-            Copyright <ph name="YEAR">{0,date,y}<ex>2016</ex></ph> The Chromium Authors. All rights reserved.
++            Copyright <ph name="YEAR">{0,date,y}<ex>2026</ex></ph> Aster Team. All rights reserved.
+           </message>
          </else>
        </if>
        <if expr="is_chromeos">
@@ -347,7 +462,7 @@ index e88d88f166..8297ead20e 100644
        <message name="IDS_CANT_WRITE_USER_DIRECTORY_SUMMARY" desc="Summary of problem displayed in dialog when we can't create a directory for this user.">
 -Chromium cannot read and write to its data directory:
 +Aster cannot read and write to its data directory:
- 
+
  <ph name="USER_DATA_DIRECTORY">$1<ex>C:\Documents and Settings\devint\Local Settings\Application Data\Google\Chrome</ex></ph>
        </message>
 @@ -658,9 +658,9 @@ Chromium cannot read and write to its data directory:
@@ -356,7 +471,7 @@ index e88d88f166..8297ead20e 100644
        <message name="IDS_PROFILE_TOO_NEW_ERROR" desc="Error displayed on startup when the profile is from a newer version of the product and can not be read">
 -Your profile can not be used because it is from a newer version of Chromium.
 +Your profile can not be used because it is from a newer version of Aster.
- 
+
 -Some features may be unavailable. Please specify a different profile directory or use a newer version of Chromium.
 +Some features may be unavailable. Please specify a different profile directory or use a newer version of Aster.
        </message>
@@ -365,18 +480,18 @@ index e88d88f166..8297ead20e 100644
 @@ -670,21 +670,21 @@ Some features may be unavailable and changes to preferences won't be saved.
        <message name="IDS_PREFERENCES_CORRUPT_ERROR" desc="Error displayed on startup when user preferences file can not be read">
  Your preferences file is corrupt or invalid.
- 
+
 -Chromium is unable to recover your settings.
 +Aster is unable to recover your settings.
        </message>
- 
+
        <if expr="is_linux">
          <message name="IDS_DESKTOP_SHORTCUT_COMMENT" desc="Description of the desktop shortcut file which will open a Chrome tab at a given url.">
 -          Open <ph name="URL">$1<ex>https://www.example-url.com/</ex></ph> in a new tab in Chromium.
 +          Open <ph name="URL">$1<ex>https://www.example-url.com/</ex></ph> in a new tab in Aster.
          </message>
        </if>
- 
+
        <!-- Password manager onboarding strings -->
        <message name="IDS_PASSWORD_MANAGER_ONBOARDING_DETAILS_C" desc="The explanation text that is shown below the title in the password manager onboarding dialog.">
 -        Chromium lets you know if your passwords are ever compromised
@@ -611,20 +726,20 @@ index e88d88f166..8297ead20e 100644
 -        This file may be dangerous<ph name="LINE_BREAK">$1</ph>Chromium can check this download for you if you provide the password. Info about the file gets sent to Google Safe Browsing, but the file content and password stay on your device.
 +        This file may be dangerous<ph name="LINE_BREAK">$1</ph>Aster can check this download for you if you provide the password. Info about the file gets sent to Google Safe Browsing, but the file content and password stay on your device.
        </message>
- 
+
        <!-- Download Shelf Items -->
        <message name="IDS_DOWNLOAD_STATUS_CRX_INSTALL_RUNNING"
                 desc="Message shown when a CRX has been downloaded and is being unpacked.">
 -        Adding to Chromium...
 +        Adding to Aster...
        </message>
- 
+
        <message name="IDS_PROMPT_DOWNLOAD_CHANGES_SETTINGS"
                 desc="Message shown on the download shelf when the download is known to change settings in the browser in a malicious way.">
 -        <ph name="FILE_NAME">$1<ex>bla.exe</ex></ph> may be dangerous, so Chromium has blocked it.
 +        <ph name="FILE_NAME">$1<ex>bla.exe</ex></ph> may be dangerous, so Aster has blocked it.
        </message>
- 
+
        <message name="IDS_PROMPT_MALICIOUS_DOWNLOAD_URL"
           desc="Message shown to the user to validate the download when the download url is classified to lead to malware by the safebrowsing database.">
 -        This file is dangerous, so Chromium has blocked it.
@@ -640,7 +755,7 @@ index e88d88f166..8297ead20e 100644
 -        Chromium recommends scanning this file because it may be dangerous.
 +        Aster recommends scanning this file because it may be dangerous.
        </message>
- 
+
        <!-- chrome://downloads page dangerous file description strings -->
        <message name="IDS_BLOCK_DOWNLOAD_REASON_DANGEROUS_FILETYPE"
                 desc="On the chrome://downloads page, the description shown for a blocked file with a dangerous filetype.">
@@ -682,7 +797,7 @@ index e88d88f166..8297ead20e 100644
 -        Chromium blocked this download because you turned Safe Browsing off and the file can't be verified
 +        Aster blocked this download because you turned Safe Browsing off and the file can't be verified
        </message>
- 
+
        <!-- chrome://downloads page bypass dangerous download warning prompt-->
        <message name="IDS_DOWNLOAD_WARNING_BYPASS_PROMPT_LEARN_MORE_LINK"
                 desc="On the downloads page, the label for the link to the help center in the prompt to bypass a dangerous download warning.">
@@ -694,7 +809,7 @@ index e88d88f166..8297ead20e 100644
 -        Learn why Chromium blocks some files, opens in new tab
 +        Learn why Aster blocks some files, opens in new tab
        </message>
- 
+
        <!-- Abandon in-progress downloads confirmation dialog -->
        <if expr="not is_macosx">
          <message name="IDS_ABANDON_DOWNLOAD_DIALOG_BROWSER_MESSAGE" desc="Message on a dialog shown when the user closes the browser while one or more downloads are in progress. This string is shown on Windows, ChromeOS, and Linux, which all use 'Exit' to refer to closing a browser.">
@@ -708,7 +823,7 @@ index e88d88f166..8297ead20e 100644
 +          Quit Aster anyway?
          </message>
        </if>
- 
+
        <!-- Quit all apps confirmation dialog -->
        <if expr="is_macosx">
          <message name="IDS_QUIT_WITH_APPS_TITLE" desc="Title for a notification explaining that Chrome is running in the background.">
@@ -716,13 +831,13 @@ index e88d88f166..8297ead20e 100644
 +          Aster is in background mode.
          </message>
        </if>
- 
+
        <!-- Google API keys info bar -->
        <message name="IDS_MISSING_GOOGLE_API_KEYS" desc="Message shown when Google API keys are missing. This message is followed by a 'Learn more' link.">
 -        Google API keys are missing. Some functionality of Chromium will be disabled.
 +        Google API keys are missing. Some functionality of Aster will be disabled.
        </message>
- 
+
        <if expr="enable_extensions_core">
          <!-- Extension installed bubble -->
          <message name="IDS_EXTENSION_INSTALLED_HEADING" desc="Title of the extension-installed bubble. Instructs that the extension was installed.">
@@ -735,13 +850,13 @@ index e88d88f166..8297ead20e 100644
 +            Manage your extensions by clicking Extensions in the Aster main menu.
            </message>
          </if>
- 
+
          <!-- Extension uninstall prompt -->
          <message name="IDS_EXTENSION_UNINSTALL_PROMPT_REMOVE_DATA_CHECKBOX" desc="Checkbox text to ask the user whether they want to remove associated data at uninstall time. Only used when uninstalling an app associated with a particular website.">
 -          Also delete data from Chromium (<ph name="URL">$1<ex>www.google.com</ex></ph>)
 +          Also delete data from Aster (<ph name="URL">$1<ex>www.google.com</ex></ph>)
          </message>
- 
+
          <!-- Extension alerts. -->
          <message name="IDS_EXTENSION_ALERT_ITEM_BLOCKLISTED_MALWARE" desc="A statement that an extension has been newly blocklisted for malware.">
 -          Chromium found that "<ph name="EXTENSION_NAME">$1<ex>Gmail Checker</ex></ph>" contains malware
@@ -774,7 +889,7 @@ index e88d88f166..8297ead20e 100644
          <message name="IDS_OPEN_WEB_STORE_BUTTON_TEXT" desc="Text for the open Chrome Web Store button." formatter_data="android_java">
            Open Chrome Web Store
 @@ -1000,58 +1000,58 @@ Chromium is unable to recover your settings.
- 
+
        <!-- Extension Safety Check Detail Page strings -->
        <message name="IDS_SAFETY_CHECK_EXTENSIONS_MALWARE" desc="The text explaining the reason for disabling extension. The extension in question contains malware.">
 -        This extension contains malware and is unsafe. Remove it from Chromium so it can no longer see and change your data on sites you visit, including your personal info.
@@ -808,7 +923,7 @@ index e88d88f166..8297ead20e 100644
 -        This extension hasn't published privacy practices, such as how it collects and uses data. Chromium recommends that you remove it.
 +        This extension hasn't published privacy practices, such as how it collects and uses data. Aster recommends that you remove it.
        </message>
- 
+
        <!-- chrome://extensions page -->
    <message name="IDS_EXTENSIONS_SC_DESCRIPTION" desc="Detailed message displayed in the Safety Check description section.">
      {NUM_EXTENSIONS, plural,
@@ -838,7 +953,7 @@ index e88d88f166..8297ead20e 100644
 -        Changes to this setting will be applied once Chromium restarts.
 +        Changes to this setting will be applied once Aster restarts.
        </message>
- 
+
        <if expr="enable_extensions">
          <message name="IDS_EXTENSIONS_MULTIPLE_UNSUPPORTED_DISABLED_BODY" desc="Body of the dialog shown when multiple unsupported extensions have been disabled.">
 -          To make Chromium safer, we disabled some extensions that aren't listed in the <ph name="IDS_EXTENSION_WEB_STORE_TITLE">$1<ex>Chrome Web Store</ex></ph> and may have been added without your knowledge.
@@ -849,30 +964,30 @@ index e88d88f166..8297ead20e 100644
 +          To make Aster safer, we disabled the following extension that isn't listed in the <ph name="IDS_EXTENSION_WEB_STORE_TITLE">$1<ex>Chrome Web Store</ex></ph> and may have been added without your knowledge.
          </message>
        </if>
- 
+
 @@ -1062,19 +1062,19 @@ Chromium is unable to recover your settings.
- 
+
        <!-- Main Chrome menu -->
        <message name="IDS_APPMENU_TOOLTIP" desc="The tooltip to show for the browser menu">
 -        Customize and control Chromium
 +        Customize and control Aster
        </message>
- 
+
        <message name="IDS_APPMENU_TOOLTIP_UPDATE_AVAILABLE" desc="The tooltip to show for the browser menu when an update is available">
 -        Customize and control Chromium. Update is available.
 +        Customize and control Aster. Update is available.
        </message>
- 
+
        <message name="IDS_APPMENU_TOOLTIP_ALERT" desc="The tooltip to show for the browser menu when a non-update alert is displayed">
 -        Customize and control Chromium. Something needs your attention - click for details.
 +        Customize and control Aster. Something needs your attention - click for details.
        </message>
- 
+
        <message name="IDS_OPEN_IN_CHROME" desc="The text label of the Open in Chrome menu item for the Hosted App app menu">
 -        &amp;Open in Chromium
 +        &amp;Open in Aster
        </message>
- 
+
        <if expr="use_titlecase and not is_chromeos">
 @@ -1086,12 +1086,12 @@ Chromium is unable to recover your settings.
            </then>
@@ -911,7 +1026,7 @@ index e88d88f166..8297ead20e 100644
          <message name="IDS_RELAUNCH_TO_UPDATE" desc="The text label of the relaunch to update ChromeOS menu item">
            Relaunch to update &amp;ChromiumOS
 @@ -1122,13 +1122,13 @@ Chromium is unable to recover your settings.
- 
+
        <if expr="is_macosx">
          <message name="IDS_APP_MENU_PRODUCT_NAME" desc="The application's short name, used for the Mac's application menu, activity monitor, etc. This should be less than 16 characters. Example: Chrome, not Google Chrome." translateable="false">
 -          Chromium
@@ -926,7 +1041,7 @@ index e88d88f166..8297ead20e 100644
 +          Aster Helper
          </message>
        </if>
- 
+
 @@ -1137,24 +1137,24 @@ Chromium is unable to recover your settings.
          <if expr="use_titlecase">
            <then>
@@ -959,19 +1074,19 @@ index e88d88f166..8297ead20e 100644
            </else>
          </if>
 @@ -1166,33 +1166,33 @@ Chromium is unable to recover your settings.
- 
+
        <!-- Chrome sign-in page -->
        <message name="IDS_CHROME_SIGNIN_TITLE" desc="Title on the about:chrome-signin page" translateable="false">
 -        Chromium
 +        Aster
        </message>
- 
+
        <!-- DICE sign-in promo strings -->
        <message name="IDS_PROFILES_DICE_SYNC_PROMO" desc="Text describing the benefits of turning on Sync.">
 -        Sync and personalize Chromium across your devices
 +        Sync and personalize Aster across your devices
        </message>
- 
+
        <!-- One click sign-in infobar -->
        <if expr="not is_chromeos">
          <message name="IDS_SYNC_WRONG_EMAIL" desc="Message shown when sync setup failed due to the user entering the wrong email address for sign-in.">
@@ -983,7 +1098,7 @@ index e88d88f166..8297ead20e 100644
 +          Someone previously signed in to Aster on this computer as <ph name="ACCOUNT_EMAIL_LAST">$1<ex>user@example.com</ex></ph>. Please create a new Aster user to keep your information separate.
          </message>
        </if>
- 
+
        <!-- Session Restore Infobar -->
        <message name="IDS_SESSION_RESTORE_TURN_OFF_RESTORE_FROM_SESSION" desc="Message that appears in the session restore infobar when the user has restored their tabs once.">
 -        Continue where you left off: Chromium restored your tabs from your last session. You can turn this off in
@@ -1008,7 +1123,7 @@ index e88d88f166..8297ead20e 100644
 +      <message name="IDS_ENTERPRISE_VALUE_PROPOSITION_PROFILE_REQUIRED_BY_ORG_TITLE" desc="Title of the screen in the profile creation flow where the user is asked whether they want to confirm signing in to Aster with their enterprise account when it is mandatory to sign in to Aster with the enterprise account.">
 +        Your organization requires you to sign into Aster
        </message>
- 
+
        <!-- Signin Search AI Mode promo -->
        <message name="IDS_AI_SIGNIN_PROMO_SUBTITLE" desc="The message shown in a sign-in promo bubble that is shown to users not signed-in to the browser when they click in an AI Mode Search result link.">
 -        You can keep chatting with AI Mode without switching tabs. To get started, sign in to Chromium. You'll also get your passwords and more on all your devices.
@@ -1018,7 +1133,7 @@ index e88d88f166..8297ead20e 100644
 -        Sign in to Chromium?
 +        Sign in to Aster?
        </message>
- 
+
        <if expr="toolkit_views">
          <message name="IDS_ENTERPRISE_SIGNIN_TITLE" desc="The title of the dialog to confirm linking the browser profile with the signed-in enterprise account">
 -          Link your Chromium data to this account?
@@ -1043,7 +1158,7 @@ index e88d88f166..8297ead20e 100644
 +          Sign in to Aster?
          </message>
        </if>
- 
+
        <!-- Management bubble -->
        <message name="IDS_MANAGEMENT_DIALOG_BROWSER_MANAGED" desc="Disclosure that an unnamed organization is managing the browser.">
 -        Your organization manages Chromium
@@ -1057,13 +1172,13 @@ index e88d88f166..8297ead20e 100644
 -        Multiple organizations manage Chromium
 +        Multiple organizations manage Aster
        </message>
- 
+
        <!-- Managed profile required interstitial -->
        <message name="IDS_MANAGED_PROFILE_INTERSTITIAL_PRIMARY_PARAGRAPH" desc="The main text of the interstitial that tells the user that their organization requires them to sign in to Chrome with their managed account in order to access it.">
 -       To continue, sign in to Chromium as <ph name="EMAIL">$1<ex>user@example.com</ex></ph>. This makes sure that you've got your organization's policies.
 +       To continue, sign in to Aster as <ph name="EMAIL">$1<ex>user@example.com</ex></ph>. This makes sure that you've got your organization's policies.
        </message>
- 
+
        <!-- Extension requests sign in to Chrome through chrome.identity API -->
        <if expr="enable_extensions">
          <message name="IDS_EXTENSION_ASKS_IDENTITY_WHILE_SIGNED_IN_WEB_ONLY_TITLE" desc="This string is the heading of a dialog intended to inform the user that one of their installed extensions wants them to sign in to Chrome to be able to use their Google Account.">
@@ -1079,7 +1194,7 @@ index e88d88f166..8297ead20e 100644
 +          An extension wants you to sign in to Aster
          </message>
        </if>
- 
+
        <!-- about:browser-switch strings -->
        <if expr="toolkit_views and not is_chromeos">
          <message name="IDS_ABOUT_BROWSER_SWITCH_DESCRIPTION_UNKNOWN_BROWSER" desc="Description shown while waiting for an alternative browser to open, when the browser name is not auto-detected">
@@ -1091,7 +1206,7 @@ index e88d88f166..8297ead20e 100644
 +          Your system administrator has configured Aster to open <ph name="ALTERNATIVE_BROWSER_NAME">$2<ex>Internet Explorer</ex></ph> to access <ph name="TARGET_URL_HOSTNAME">$1<ex>example.com</ex></ph>.
          </message>
        </if>
- 
+
        <!-- NTP strings -->
        <message name="IDS_NTP_CUSTOMIZE_TOOLBAR_CATEGORY_YOUR_CHROME" desc="The label for the category of actions that involve your Chrome data, such as opening the password manager or clearing browsing data.">
 -        Your Chromium
@@ -1118,7 +1233,7 @@ index e88d88f166..8297ead20e 100644
 -        Reset to Default Chromium
 +        Reset to Default Aster
        </message>
- 
+
        <!-- New Tab Page browser feature promotions. -->
        <if expr="not is_android">
          <message name="IDS_NTP_CUSTOMIZATION_PROMO" desc="The text shown in the body of the New Tab Page browser customization promotion">
@@ -1134,7 +1249,7 @@ index e88d88f166..8297ead20e 100644
 +          Get the Aster app to save passwords on the go
          </message>
        </if>
- 
+
        <!-- Customize Chrome Auto Promo Strings -->
 -      <message name="IDS_IPH_CUSTOMIZE_CHROME_AUTO_OPEN_BODY" desc="The description of the IPH to auto open Customize Chromium">
 -        Customize Chromium to give it a new look
@@ -1146,7 +1261,7 @@ index e88d88f166..8297ead20e 100644
 +      <message name="IDS_IPH_CUSTOMIZE_CHROME_AUTO_OPEN_SCREENREADER" desc="The screenreader of the IPH to auto open Customize Aster" is_accessibility_with_no_ui="true">
 +        Click the Customize Aster button on the New Tab Page to give Aster a new look
        </message>
- 
+
        <!-- Realbox Strings -->
 @@ -1325,135 +1325,135 @@ Chromium is unable to recover your settings.
        <!-- Signin Email Confirmation tab modal dialog -->
@@ -1156,7 +1271,7 @@ index e88d88f166..8297ead20e 100644
 +          <ph name="USER_EMAIL_ADDRESS">$1<ex>foo@gmail.com</ex></ph> was previously using Aster
          </message>
        </if>
- 
+
        <!-- Dice Web Signin Interception Bubble-->
        <if expr="not use_titlecase">
          <message name="IDS_AVATAR_BUTTON_INTERCEPT_BUBBLE_CHROME_SIGNIN_TEXT"
@@ -1196,7 +1311,7 @@ index e88d88f166..8297ead20e 100644
 +          Use Aster Without an Account
          </message>
        </if>
- 
+
        <if expr="not is_chromeos and not is_android">
          <message name="IDS_SIGNIN_DICE_WEB_INTERCEPT_CREATE_BUBBLE_TITLE_V2" desc="Title of the web signin interception bubble used when Explicit browser Sign in is enabled">
 -          Sign in to Chromium in a new profile?
@@ -1305,7 +1420,7 @@ index e88d88f166..8297ead20e 100644
 +          desc="Accessibility label (read by the accessibility tools) of the avatar button when Aster is in 'Sign-in pending' state. This state means that the account associated with Aster does not have valid credentials anymore and needs to be re-authenticated.">
 +          Aster account requires re-authentication
          </message>
- 
+
          <!-- Autofill Sign In Promo Bubble -->
 -        <message name="IDS_AUTOFILL_SIGNIN_PROMO_SUBTITLE_PASSWORD" desc="This is the body text of a confirmation message and means that the password was only saved locally to the user's device (not in their Google Account). It appears when the user is not signed in to Chromium and is after the 'Password saved to this device' string. If the user wants to save this data to their Google Account, they can click the 'Sign in to Chromium' button at the bottom of this message. The tone should be motivating.">
 -          To get your passwords and more on all your devices, sign in to Chromium. This password will be saved in your Google Account after you sign in.
@@ -1318,7 +1433,7 @@ index e88d88f166..8297ead20e 100644
 +          To get your addresses and more on all your devices, sign in to Aster. This address will be saved in your Google Account after you sign in.
          </message>
        </if>
- 
+
        <message name="IDS_SYNC_PASSPHRASE_DIALOG_FOOTER" desc="Dialog footer of the passphrase dialog.">
 -        If you forgot your passphrase or want to change this setting, <ph name="SETTINGS_LINK">$1<ex>clear</ex></ph> the Chromium data in your account
 +        If you forgot your passphrase or want to change this setting, <ph name="SETTINGS_LINK">$1<ex>clear</ex></ph> the Aster data in your account
@@ -1331,7 +1446,7 @@ index e88d88f166..8297ead20e 100644
 -        Your data is encrypted with your passphrase. Enter it to use and save Chromium data in your Google Account.
 +        Your data is encrypted with your passphrase. Enter it to use and save Aster data in your Google Account.
        </message>
- 
+
        <if expr="not is_chromeos and not is_android">
          <!-- Profile Customization Web UI -->
          <message name="IDS_PROFILE_CUSTOMIZATION_TEXT" desc="Text of the profile customization bubble">
@@ -1343,7 +1458,7 @@ index e88d88f166..8297ead20e 100644
 +          Customize your Aster profile
          </message>
        </if>
- 
+
 @@ -1466,7 +1466,7 @@ Chromium is unable to recover your settings.
            ChromiumOS could not sync your data because your account sign-in details are out of date.
          </message>
@@ -1373,7 +1488,7 @@ index e88d88f166..8297ead20e 100644
 +          To make sure you can always use and save Aster data in your Google Account, verify it's you
          </message>
        </if>
- 
+
        <!-- Profile Menu -->
        <message name="IDS_PROFILE_MENU_SIGNIN_PROMO_BUTTON" meaning="Button" desc="Text for the button in the sign-in promo in the profile menu when the used is signed out.">
 -        Sign in to Chromium
@@ -1437,13 +1552,13 @@ index e88d88f166..8297ead20e 100644
 +          Add Aster Profile
          </message>
        </if>
- 
+
        <!-- Sign in on your phone (QR code) strings  -->
        <message name="IDS_QR_CODE_BUBBLE_SIGNIN_ON_PHONE_TITLE" desc="Title of the QR Code bubble showing a code for the user to sign in on their phone.">
 -        Sign in to Chromium on your phone
 +        Sign in to Aster on your phone
        </message>
- 
+
        <!-- App list -->
        <if expr="is_chromeos">
          <message name="IDS_APP_LIST_EXTENSIONS_UNINSTALL" desc="Title text for the context menu item of a non-platform-app app list item that removes the app.">
@@ -1451,12 +1566,12 @@ index e88d88f166..8297ead20e 100644
 +          Remove from Aster...
          </message>
        </if>
- 
+
        <message name="IDS_APP_ALSO_DELETE_APPS_DATA" desc="Checkbox text to ask the user during uninstall; Whether they want to remove associated data for the app being uninstalled. Only used when uninstalling an app associated with a particular website.">
 -        Remove this app's data from Chromium
 +        Remove this app's data from Aster
        </message>
- 
+
        <!-- App shortcuts -->
 -      <message name="IDS_APP_SHORTCUTS_SUBDIR_NAME" desc="Name for the Chromium Apps Start Menu folder name.">
 -        Chromium Apps
@@ -1475,7 +1590,7 @@ index e88d88f166..8297ead20e 100644
 +        <message name="IDS_APP_SHORTCUTS_SUBDIR_NAME_DEV" desc="Unused in Aster builds" translateable="false">
          </message>
        </if>
- 
+
        <!-- MediaStream capture status tray icon -->
        <message name="IDS_MEDIA_STREAM_STATUS_TRAY_TEXT_AUDIO_AND_VIDEO" desc="Tool tip for the capture status tray icon when microphone and camera are being used">
 -        Chromium is using your camera and microphone.
@@ -1489,7 +1604,7 @@ index e88d88f166..8297ead20e 100644
 -        Chromium is using your camera.
 +        Aster is using your camera.
        </message>
- 
+
        <if expr="not is_android">
          <!-- WebHID system tray icon -->
          <message name="IDS_WEBHID_SYSTEM_TRAY_ICON_TITLE" desc="Title for the WebHID system tray icon">
@@ -1501,7 +1616,7 @@ index e88d88f166..8297ead20e 100644
 +              =1 {1 HID device is being accessed by one or more Aster extensions}
 +            other {# HID devices are being accessed by one or more Aster extensions}}
          </message>
- 
+
          <!-- WebUSB system tray icon -->
           <message name="IDS_WEBUSB_SYSTEM_TRAY_ICON_TITLE" desc="Title for the WebUSB system tray icon">
              {NUM_DEVICES, plural,
@@ -1513,7 +1628,7 @@ index e88d88f166..8297ead20e 100644
 +            other {# USB devices are being accessed by one or more Aster extensions}}
          </message>
        </if>
- 
+
        <!-- ProcessSingleton -->
        <if expr="is_posix">
          <message name="IDS_PROFILE_IN_USE_POSIX" desc="Message shown when the browser cannot start because the profile is in use on a different host.">
@@ -1521,7 +1636,7 @@ index e88d88f166..8297ead20e 100644
 +          The profile appears to be in use by another Aster process (<ph name="PROCESS_ID">$1<ex>12345</ex></ph>) on another computer (<ph name="HOST_NAME">$2<ex>example.com</ex></ph>). Aster has locked the profile so that it doesn't get corrupted. If you are sure no other processes are using this profile, you can unlock the profile and relaunch Aster.
          </message>
        </if>
- 
+
        <!-- Mac First-run dialog messages -->
        <if expr="is_macosx">
          <message name="IDS_FIRSTRUN_DLG_MAC_SET_DEFAULT_BROWSER_LABEL" desc="Label for checkbox that sets the default browser">
@@ -1529,7 +1644,7 @@ index e88d88f166..8297ead20e 100644
 +          Set Aster as your default browser
          </message>
        </if>
- 
+
 @@ -1609,40 +1609,40 @@ Chromium is unable to recover your settings.
        <if expr="not is_android and not is_chromeos">
          <!-- User pod remove sync warning text -->
@@ -1537,7 +1652,7 @@ index e88d88f166..8297ead20e 100644
 -          This person's browsing data will be deleted from this device. To recover the data, sign in to Chromium as <ph name="USER_EMAIL">$2<ex>foo@example.com</ex></ph>.
 +          This person's browsing data will be deleted from this device. To recover the data, sign in to Aster as <ph name="USER_EMAIL">$2<ex>foo@example.com</ex></ph>.
          </message>
- 
+
          <!-- Tutorial -->
          <message name="IDS_USER_MANAGER_TUTORIAL_SLIDE_INTRO_TITLE" desc="Title of the tutorial introduction slide">
 -          Chromium just got better
@@ -1572,7 +1687,7 @@ index e88d88f166..8297ead20e 100644
 +          Add yourself to Aster
          </message>
        </if>
- 
+
        <if expr="not is_android">
          <!-- Password Manager Tutorial Strings -->
          <message name="IDS_TUTORIAL_PASSWORD_MANAGER_OPEN_APP_MENU" desc="The description of the 'open add menu' step in password manager tutorial">
@@ -1582,7 +1697,7 @@ index e88d88f166..8297ead20e 100644
          <message name="IDS_TUTORIAL_PASSWORD_MANAGER_CLICK_PASSWORD_MANAGER" desc="The description of the 'click password manager' step in password manager tutorial">
            Click “Password Manager”
 @@ -1657,94 +1657,94 @@ Chromium is unable to recover your settings.
- 
+
        <!-- Settings API bubble -->
        <message name="IDS_EXTENSIONS_SETTINGS_API_SECOND_LINE_START_PAGES" desc="Second line in the Settings API bubble. Only shown if the secondary change by the extension was just the start pages. The triple single quotes are needed to preserve the space before and after the sentence which is needed when the language (Chrome is being translated to) uses space as word separator. Please preserve them, unless the language being translated to does not use space as word separator.">
 -        ''' It also controls what page is shown when you start Chromium. '''
@@ -1592,7 +1707,7 @@ index e88d88f166..8297ead20e 100644
 -        ''' It also controls what page is shown when you start Chromium or search from the Omnibox. '''
 +        ''' It also controls what page is shown when you start Aster or search from the Omnibox. '''
        </message>
- 
+
        <!-- Search Settings Page -->
        <message name="IDS_SETTINGS_SEARCH_EXTENSION_ENGINES_ACTIVE_SHORTCUTS_EXPLANATION" desc="Subtitle for the active features and extensions subsection, explaining how they can be used.">
 -        To search a specific Chromium feature or extension, type its shortcut in the address bar, followed by your selected keyboard key
@@ -1602,13 +1717,13 @@ index e88d88f166..8297ead20e 100644
 -        Some Chromium features and extensions come with shortcuts. You can choose to turn them back on.
 +        Some Aster features and extensions come with shortcuts. You can choose to turn them back on.
        </message>
- 
+
        <!-- Webstore strings -->
        <message name="IDS_WEBSTORE_APP_DESCRIPTION" desc="Description for the WebStore app.">
 -        Discover great apps, games, extensions and themes for Chromium.
 +        Discover great apps, games, extensions and themes for Aster.
        </message>
- 
+
        <!-- Windows firewall rule strings. -->
        <if expr="is_win">
          <message name="IDS_INBOUND_MDNS_RULE_NAME" desc="The name of the firewall rule allowing inbound mDNS traffic.">
@@ -1638,7 +1753,7 @@ index e88d88f166..8297ead20e 100644
 +        <message name="IDS_INBOUND_MDNS_RULE_DESCRIPTION_DEV" desc="Unused in Aster builds" translateable="false">
          </message>
        </if>
- 
+
        <if expr="not is_android">
 -        <message name="IDS_CONTENT_CONTEXT_ACCESSIBILITY_LABELS_BUBBLE_TEXT" desc="The text of a bubble that confirms users allows integrating the accessibility labels service of Google to Chromium.">
 -          If an image doesn’t have a useful description, Chromium will try to provide one for you. To create descriptions, images are sent to Google. You can turn this off in settings at any time.
@@ -1681,13 +1796,13 @@ index e88d88f166..8297ead20e 100644
 +            Open Link in Aster Inco&amp;gnito Window
            </message>
          </if>
- 
+
          <!-- On Sign-in Avatar Button Label Desktop -->
          <message name="IDS_AVATAR_BUTTON_MAKING_CHROME_YOURS" desc="The avatar button label when the user has just signed in. When clicked, it opens the profile menu.">
 -          Making Chromium yours...
 +          Making Aster yours...
          </message>
- 
+
          <!-- Sign-in Promo Avatar Button Label Desktop -->
          <if expr="not use_titlecase">
            <message name="IDS_AVATAR_BUTTON_SIGNIN_PROMO" desc="The avatar button promo label inviting the user to sign-in. Shown for signed out users, and signed in to the web only. When clicked, it opens the profile menu.">
@@ -1721,7 +1836,7 @@ index e88d88f166..8297ead20e 100644
          <message name="IDS_RELAUNCH_AND_UPDATE" desc="The button in the Update Recommended dialog which updates and relaunches Chrome.">
            Relaunch
 @@ -1778,71 +1778,71 @@ Chromium is unable to recover your settings.
- 
+
        <if expr="is_win or is_macosx or is_linux">
          <message name="IDS_UPDATE_RECOMMENDED_DIALOG_TITLE_ALT" desc="Alternate window title for the Update Recommended dialog." translateable="false">
 -          Not used in Chromium. Placeholder to keep resource maps in sync.
@@ -1732,7 +1847,7 @@ index e88d88f166..8297ead20e 100644
 +          Not used in Aster. Placeholder to keep resource maps in sync.
          </message>
        </if>
- 
+
        <!-- Update bubble -->
        <message name="IDS_REINSTALL_APP" desc="Text for the button the user clicks to reinstall the app.">
 -        Reinstall Chromium
@@ -1758,7 +1873,7 @@ index e88d88f166..8297ead20e 100644
 -        Chromium couldn't update to the latest version, so you're missing out on new features and security fixes.
 +        Aster couldn't update to the latest version, so you're missing out on new features and security fixes.
        </message>
- 
+
        <!-- User menu errors -->
        <message name="IDS_SYNC_ERROR_USER_MENU_UPGRADE_BUTTON" desc="Button in the header of desktop user menu that prompts the user to update Chrome to fix the out-of-date Chrome client error.">
 -        Update Chromium
@@ -1780,7 +1895,7 @@ index e88d88f166..8297ead20e 100644
 -        Update Chromium to keeping using the Chromium data in your Google Account, <ph name="ACCOUNT_EMAIL">$1<ex>elisa.beckett@gmail.com</ex></ph>
 +        Update Aster to keeping using the Aster data in your Google Account, <ph name="ACCOUNT_EMAIL">$1<ex>elisa.beckett@gmail.com</ex></ph>
        </message>
- 
+
        <!-- Sync errors. -->
        <message name="IDS_SYNC_UPGRADE_CLIENT" desc="Message indicating client needs to be upgraded to the latest version.">
 -        Update Chromium to start sync
@@ -1790,7 +1905,7 @@ index e88d88f166..8297ead20e 100644
 -        Update Chromium
 +        Update Aster
        </message>
- 
+
        <!-- Upgrade recovery bubble -->
        <message name="IDS_RECOVERY_BUBBLE_TITLE" desc="Text for the title of the chrome recovery bubble view.">
 -        Chromium is out of date
@@ -1811,7 +1926,7 @@ index e88d88f166..8297ead20e 100644
        <message name="IDS_RECOVERY_BUBBLE_TEXT" desc="Text for the chrome recovery bubble view full description.">
 @@ -1850,75 +1850,75 @@ Chromium is unable to recover your settings.
        </message>
- 
+
        <!-- Critical Notification bubble -->
 -      <message name="IDS_CRITICAL_NOTIFICATION_TITLE" desc="The title for a bubble that appears when there is a critical update and Chromium must restart to install it. It counts down a timer and then Chromium automatically restarts.">
 -        Chromium will restart in <ph name="REMAINING_TIME">$1<ex>1 minute, 7 seconds</ex></ph>
@@ -1828,7 +1943,7 @@ index e88d88f166..8297ead20e 100644
 +      <message name="IDS_CRITICAL_NOTIFICATION_TEXT" desc="Explanation text for the bubble that appears when there is a critical update and Aster must restart to install it.">
 +        A special security update for Aster was just applied. Restart now and we'll restore your tabs.
        </message>
- 
+
        <!-- Desktop Capture -->
        <message name="IDS_DESKTOP_MEDIA_PICKER_SOURCE_TYPE_TAB" desc="Text for the button on the window picker dialog, clicking which takes one to tab sharing">
 -        Chromium Tab
@@ -1858,15 +1973,15 @@ index e88d88f166..8297ead20e 100644
 -        To share system audio, open System Settings and allow 'System Audio Recording Only' for Chromium. You'll then need to restart Chromium.
 +        To share system audio, open System Settings and allow 'System Audio Recording Only' for Aster. You'll then need to restart Aster.
        </message>
- 
+
        <!-- Runtime permission strings -->
        <if expr="is_android">
- 
+
          <message name="IDS_MISSING_STORAGE_PERMISSION_DOWNLOAD_EDUCATION_TEXT" desc="Text shown educating the user that Chrome is missing the Android storage permission, which is required to download files.">
 -          Chromium needs storage access to download files
 +          Aster needs storage access to download files
          </message>
- 
+
          <message name="IDS_MESSAGE_MISSING_AR_CAMERA_PERMISSION_TEXT" desc="Text shown in a prompt ui when a website has requested access to augmented reality capabilities, but Chrome is missing the Android camera permission.">
 -          Chromium needs camera permission to create a 3D map of your surroundings
 +          Aster needs camera permission to create a 3D map of your surroundings
@@ -1900,7 +2015,7 @@ index e88d88f166..8297ead20e 100644
 +          Aster needs permission to map your surroundings and track your hands
          </message>
        </if>
- 
+
        <if expr="is_macosx">
          <message name="IDS_RUNTIME_PERMISSION_OS_REASON_TEXT" desc="Text provided to the macOS permission dialog, explaining why Chrome needs to access a protected resource (e.g., camera, microphone).">
 -          Once Chromium has access, websites will be able to ask you for access.
@@ -1909,19 +2024,19 @@ index e88d88f166..8297ead20e 100644
          <message name="IDS_LOCAL_NETWORK_ACCESS_PERMISSION_DESC" desc="Text shown in the macOS permission dialog, describing why Chrome needs the permission to access local network.">
            This will allow you to select from available devices and display content on them.
 @@ -1927,12 +1927,12 @@ Chromium is unable to recover your settings.
- 
+
        <!-- Side panel strings -->
        <message name="IDS_SIDE_PANEL_CUSTOMIZE_CHROME_TITLE" desc="The name of the Customize Chrome feature in the side panel combo box.">
 -        Customize Chromium
 +        Customize Aster
        </message>
- 
+
        <!-- History Strings -->
        <message name="IDS_HISTORY_HISTORY_MENU_ITEM" desc="Label displayed in history sidebar button to display history.">
 -        Chromium history
 +        Aster history
        </message>
- 
+
        <!-- Lens Overlay Strings -->
 @@ -2307,7 +2307,7 @@ Chromium is unable to recover your settings.
          </message>
@@ -2115,7 +2230,7 @@ index e88d88f166..8297ead20e 100644
 +          Help us improve Aster
          </message>
        </if>
- 
+
 @@ -2544,104 +2544,104 @@ Chromium is unable to recover your settings.
        <!-- Chrome parent extension/app install blocking dialog. -->
        <if expr="enable_extensions_core">
@@ -2124,7 +2239,7 @@ index e88d88f166..8297ead20e 100644
 +         Your parent has turned off "Permissions for sites, apps and extensions" for Aster
          </message>
        </if>
- 
+
        <if expr="not is_chromeos and not is_android">
          <!-- Enterprise profile welcome screen -->
          <message name="IDS_ENTERPRISE_WELCOME_PROFILE_INFORMATION_DETAILS" desc="Paragraph disclaiming to the user what their organization can do with their profile information.">
@@ -2169,7 +2284,7 @@ index e88d88f166..8297ead20e 100644
 -          To use this profile with Glic, open Chromium and sign in
 +          To use this profile with Glic, open Aster and sign in
          </message>
- 
+
          <!-- First Run Experience -->
          <message name="IDS_FRE_SIGN_IN_TITLE_0" meaning="Title"
 -          desc="This string appears as a heading on a full-page screen that asks the user to sign in to Chromium with their Google Account. It appears when the user launches Chromium for the first time. When they sign in, they can personalize and customize Chromium and remember their settings in their Google Account. The tone should be inviting and alluring.">
@@ -2182,7 +2297,7 @@ index e88d88f166..8297ead20e 100644
 +        <message name="IDS_FRE_GET_YOUR_BROWSER_READY_TITLE" meaning="Title" desc="It appears when the user launches Aster for the first time on the page that is displayed before the sign in page. When they sign in, they can personalize and customize Aster and remember their settings in their Google Account. The tone should be inviting and alluring.">
 +          Let's get your Aster ready
          </message>
- 
+
          <!-- Default Browser Promo -->
 -        <message name="IDS_FRE_DEFAULT_BROWSER_TITLE" desc="Title for the page that prompts user to set Chromium as their default browser in the first run experience.">
 -          Set Chromium as your default browser
@@ -2222,7 +2337,7 @@ index e88d88f166..8297ead20e 100644
 +        <message name="IDS_SET_BROWSER_AS_DEFAULT_MENU_ITEM" desc="Menu item that prompts user to set Aster as their default browser.">
 +          Set Aster as your default browser
          </message>
- 
+
          <!-- Default Browser Promo Refresh -->
 -        <message name="IDS_FRE_REFRESH_DEFAULT_BROWSER_TITLE" desc="Title for the page that prompts user to set Chromium as their default browser in the refreshed first run experience.">
 -          Set Chromium as default and pin it to taskbar
@@ -2234,7 +2349,7 @@ index e88d88f166..8297ead20e 100644
 +        <message name="IDS_FRE_REFRESH_DEFAULT_BROWSER_SUBTITLE" desc="Subtitle for the page that prompts user to set Aster as their default browser in the refreshed first run experience.">
 +          Open links in Aster from any app and keep the browser accessible on your taskbar
          </message>
- 
+
          <!-- Profile switch IPH -->
          <message name="IDS_PROFILE_SWITCH_PROMO" desc="Text of the In-Product-Help bubble for profile switching.">
 -          You can switch between Chromium profiles here
@@ -2248,7 +2363,7 @@ index e88d88f166..8297ead20e 100644
 -          You can switch to see passwords from another Chromium profile
 +          You can switch to see passwords from another Aster profile
          </message>
- 
+
          <!-- Web Signout Intercept IPH -->
 -        <message name="IDS_SIGNOUT_DICE_WEB_INTERCEPT_BUBBLE_CHROME_SIGNOUT_IPH_TEXT" desc="This confirmation message is intended to help users to understand that signing out of a Google service (like Gmail) will not sign them out of Chromium. It appears in a blue in-product help bubble, which points to the Chromium Profile Menu; it appears after the user signs out of a Google service (like Gmail). The user can open the Profile Menu and sign out of Chromium, if they wish to do so.">
 -          To remove your Google Account from Chromium, sign out
@@ -2260,7 +2375,7 @@ index e88d88f166..8297ead20e 100644
 +        <message name="IDS_SIGNOUT_DICE_WEB_INTERCEPT_BUBBLE_CHROME_SIGNOUT_IPH_TEXT_SCREENREADER" desc="Text announced by screenreaders related to the confirmation message is intended to help users to understand that signing out of a Google service (like Gmail) will not sign them out of Aster. It appears in a blue in-product help bubble, which points to the Aster Profile Menu; it appears after the user signs out of a Google service (like Gmail). The user can open the Profile Menu and sign out of Aster, if they wish to do so.">
 +          To remove your Google Account from Aster, sign out of Aster in the Settings page
          </message>
- 
+
          <!-- Feature Showcase - Password Manager -->
 @@ -2649,7 +2649,7 @@ Chromium is unable to recover your settings.
            Stay safe with Password Manager
@@ -2269,31 +2384,31 @@ index e88d88f166..8297ead20e 100644
 -          Built into Chromium to help you create, save, and autofill strong passwords. Add the shortcut for easy access.
 +          Built into Aster to help you create, save, and autofill strong passwords. Add the shortcut for easy access.
          </message>
- 
+
          <!-- Feature Showcase - Lens -->
 @@ -2663,7 +2663,7 @@ Chromium is unable to recover your settings.
- 
+
        <!-- Feature Showcase - Lens Overlay -->
        <message name="IDS_FEATURE_SHOWCASE_THEMES_TITLE" desc="This is the headline for a customization onboarding screen. It focuses on personalization and user choice. (CHAR LIMIT = 30)">
 -        Make Chromium yours
 +        Make Aster yours
        </message>
- 
+
        <!-- Notification quiet permission IPH -->
 @@ -2676,20 +2676,20 @@ Chromium is unable to recover your settings.
- 
+
        <!-- ChromeLabs bubble -->
        <message name="IDS_CHROMELABS_RELAUNCH_FOOTER_MESSAGE" desc="Text that shows in the footer of the Chrome Labs bubble when relaunch is needed for changes to take effect.">
 -        Your changes will take effect the next time you relaunch Chromium.
 +        Your changes will take effect the next time you relaunch Aster.
        </message>
- 
+
        <!-- Device Chooser Prompt -->
        <message name="IDS_SERIAL_DEVICE_CHOOSER_AUTHORIZE_BLUETOOTH" desc="Text shown in the Web Serial Chooser when browser does not have Bluetooth permission. The '&#10;' is a newline character to force the desired line wrapping.">
 -        Chromium needs Bluetooth access to explore &#10; Bluetooth devices. <ph name="IDS_SERIAL_DEVICE_CHOOSER_AUTHORIZE_BLUETOOTH_LINK">$1<ex>Open Preferences</ex></ph>
 +        Aster needs Bluetooth access to explore &#10; Bluetooth devices. <ph name="IDS_SERIAL_DEVICE_CHOOSER_AUTHORIZE_BLUETOOTH_LINK">$1<ex>Open Preferences</ex></ph>
        </message>
- 
+
        <!-- Tailored Security -->
        <message name="IDS_TAILORED_SECURITY_UNCONSENTED_PROMOTION_NOTIFICATION_TITLE" desc="Title of notification prompting the user to enable Enhanced Safe Browsing after they have enabled account-level protections.">
 -        Get Chromium's strongest security
@@ -2306,7 +2421,7 @@ index e88d88f166..8297ead20e 100644
        <message name="IDS_TAILORED_SECURITY_UNCONSENTED_PROMOTION_MESSAGE_DESCRIPTION" desc="Description shown in the message shown when a user changes their account-level tailored security setting encouraging them to enable Enhanced Safe Browsing">
          Enhanced protection does more to block phishing and malware
 @@ -2703,40 +2703,40 @@ Chromium is unable to recover your settings.
- 
+
        <!--Launch On Startup-->
        <if expr="is_win">
 -        <message name="IDS_SETTINGS_FOREGROUND_LAUNCH_ON_STARTUP_LABEL" desc="Label for settings toggle button that enables or disables opening Chromium on system startup">
@@ -2330,7 +2445,7 @@ index e88d88f166..8297ead20e 100644
 +          Aster now launches when Windows starts so you can begin browsing instantly. You can turn this off in settings.
          </message>
        </if>
- 
+
        <!-- Advanced security settings -->
        <message name="IDS_SETTINGS_SECURITY_JAVASCRIPT_OPTIMIZATION_LINK_ROW_ENABLED" desc="Description for the link row of the Javascript-optimization page when javascript-optimization is enabled.">
 -        Speeds up sites with Chromium's V8 engine but makes Chromium slightly less resistant to attacks. This setting is on.
@@ -2404,7 +2519,7 @@ index e88d88f166..8297ead20e 100644
 +          Keeps your Aster software up to date. If this service is disabled or stopped, your Aster software will not be kept up to date, meaning security vulnerabilities that may arise cannot be fixed and features may not work. This service uninstalls itself when there is no Aster software using it.
          </message>
        </if>
- 
+
        <!-- Memory Saver Chip strings -->
        <if expr="not is_android">
          <message name="IDS_MEMORY_SAVER_DIALOG_BODY" desc="Body text for a dialog describing that Memory Saver mode will use less memory.">
@@ -2412,7 +2527,7 @@ index e88d88f166..8297ead20e 100644
 +          While this tab was inactive, memory was freed up to keep Aster fast. You can choose to always exclude this site from being inactive.
          </message>
        </if>
- 
+
        <!-- Memory Saver IPH strings -->
        <if expr="not is_android">
          <message name="IDS_MEMORY_SAVER_MODE_PROMO_TITLE" desc="The title for the Memory Saver mode in-product promo bubble">
@@ -2420,7 +2535,7 @@ index e88d88f166..8297ead20e 100644
 +          Make Aster faster
          </message>
        </if>
- 
+
        <!-- Performance Intervention Dialog strings -->
        <if expr="not is_android">
          <message name="IDS_PERFORMANCE_INTERVENTION_DIALOG_BODY_V1" desc="Body text for a dialog suggesting users to deactivate certain tabs to improve performance.">
@@ -2450,13 +2565,13 @@ index e88d88f166..8297ead20e 100644
            </message>
          </if>
        </if>
- 
+
        <!-- Delete Browsing Data -->
        <message name="IDS_SETTINGS_CLEAR_BROWSING_DATA_SIGNED_IN" desc="Description in the footer of the Delete Browsing Data dialog when the user is signed.">
 -        To delete browsing data from this device only, while keeping it in your Google Account, <ph name="BEGIN_LINK">&lt;a href="#" target=&quot;_blank&quot;&gt;</ph>sign out of Chromium<ph name="END_LINK">&lt;/a&gt;</ph>.
 +        To delete browsing data from this device only, while keeping it in your Google Account, <ph name="BEGIN_LINK">&lt;a href="#" target=&quot;_blank&quot;&gt;</ph>sign out of Aster<ph name="END_LINK">&lt;/a&gt;</ph>.
        </message>
- 
+
        <!-- New Create Shortcut View Strings -->
        <if expr="not is_android and not is_chromeos">
 -        <message name="IDS_CREATE_SHORTCUT_NOT_APPS_DIALOG_SUBTITLE" desc="Subtitle of the updated Create Shortcut dialog about how the site opens for Chromium">
@@ -2471,7 +2586,7 @@ index e88d88f166..8297ead20e 100644
 +          Aster Shortcut
          </message>
        </if>
- 
+
        <!-- Toast Strings-->
        <if expr="not is_android">
          <message name="IDS_CLEAR_BROWSING_DATA_TOAST_BODY" desc="Text on a toast notification that is shown when browsing data is successfully cleared.">
@@ -2483,7 +2598,7 @@ index e88d88f166..8297ead20e 100644
 -        Try with Gemini in Chromium
 +        Try with Gemini in Aster
        </message>
- 
+
        <!-- Glic Strings -->
        <message name="IDS_GLIC_PROMO_TITLE" desc="Glic promo title." translateable="false">
 -        Try Gemini in Chromium
@@ -2497,12 +2612,12 @@ index e88d88f166..8297ead20e 100644
 -        Close Gemini in Chromium
 +        Close Gemini in Aster
        </message>
- 
+
        <message name="IDS_GLIC_THREE_DOT_MENU_ITEM" desc="Glic three dot menu item entry point." translateable="false">
 -        Open Gemini in Chromium
 +        Open Gemini in Aster
        </message>
- 
+
        <!-- Glic status tray icon strings -->
        <message name="IDS_GLIC_STATUS_ICON_TOOLTIP" translateable="false" desc="This is the tooltip that is shown when the glic status icon is hovered and the Glic window is closed.">
 -        Open Gemini in Chromium
@@ -2547,7 +2662,7 @@ index e88d88f166..8297ead20e 100644
 -        To use Gemini in Chromium, sign in with a different Google Account
 +        To use Gemini in Aster, sign in with a different Google Account
        </message>
- 
+
        <!-- Experimental Glic settings -->
        <message name="IDS_SETTINGS_GLIC_PAGE_TITLE" translateable="false" desc="Title of the Glic settings subpage. Also shown as page title in tabstrip.">
 -        Gemini in Chromium
@@ -2597,7 +2712,7 @@ index e88d88f166..8297ead20e 100644
 -        To select part of the screen in Gemini in Chromium, use keyboard shortcut.
 +        To select part of the screen in Gemini in Aster, use keyboard shortcut.
        </message>
- 
+
        <!-- Profile Picker Glic version-->
        <message name="IDS_PROFILE_PICKER_MAIN_VIEW_TITLE_GLIC" desc="Profile picker main view title for Glic version. 'Glic' has a special styling." translateable="false">
 -        Choose a Chromium profile to use with <ph name="START_GLIC_STYLING">&lt;span class="glic-brand-style"&gt;</ph>Glic<ph name="END_GLIC_STYLING">&lt;/span&gt;</ph>
@@ -2619,13 +2734,13 @@ index e88d88f166..8297ead20e 100644
 -        To add a new profile and use it with Glic, sign in to Chromium with a different Google Account. <ph name="BEGIN_LINK">&lt;a class="learn-more-link" href="#" target=&quot;_blank&quot;&gt;</ph>Learn how to add a new Chromium profile<ph name="END_LINK">&lt;/a&gt;</ph>
 +        To add a new profile and use it with Glic, sign in to Aster with a different Google Account. <ph name="BEGIN_LINK">&lt;a class="learn-more-link" href="#" target=&quot;_blank&quot;&gt;</ph>Learn how to add a new Aster profile<ph name="END_LINK">&lt;/a&gt;</ph>
        </message>
- 
+
        <!-- Glic button and tab strip context menu -->
        <message name="IDS_GLIC_CONTEXTUAL_CUEING_ANNOUNCEMENT" desc="Polite announcement that happens when a contextual nudge is shown next to the Glic button." translateable="false">
 -        To open Gemini in Chromium, press <ph name="GLOBAL_HOTKEY">$1<ex>⌘+G</ex></ph>
 +        To open Gemini in Aster, press <ph name="GLOBAL_HOTKEY">$1<ex>⌘+G</ex></ph>
        </message>
- 
+
        <!-- UNO Promo strings for extensions -->
        <if expr="enable_extensions">
          <message name="IDS_EXTENSION_INSTALLED_PROMO_EXPLICIT_SIGNIN_MESSAGE" desc="Text of the promo displayed at the bottom of the extension installed bubble asking the user to enable UNO.">
@@ -2633,7 +2748,7 @@ index e88d88f166..8297ead20e 100644
 +          To get this extension and more on all your computers, sign in to Aster
          </message>
        </if>
- 
+
        <!-- UNO Promo strings for bookmarks -->
        <message name="IDS_BOOKMARK_INSTALLED_PROMO_EXPLICIT_SIGNIN_MESSAGE" desc="Text of the promo displayed at the bottom of the bookmark bubble asking the user to enable UNO.">
 -        To get this bookmark and more on all your devices, sign in to Chromium
@@ -2643,7 +2758,7 @@ index e88d88f166..8297ead20e 100644
 -        To get your bookmarks and more on all your devices, sign in to Chromium. This bookmark will be saved in your Google Account after you sign in.
 +        To get your bookmarks and more on all your devices, sign in to Aster. This bookmark will be saved in your Google Account after you sign in.
        </message>
- 
+
        <!-- Dice Migration strings -->
        <message name="IDS_DICE_MIGRATION_CONFIRMATION_TOAST_MESSAGE" desc="The confirmation message shown in a toast after the user clicks on the accept button on the Dice Migration dialog.">
 -        You now have more features available in Chromium
@@ -2668,7 +2783,7 @@ index e88d88f166..8297ead20e 100644
        </if>
 @@ -3225,10 +3225,10 @@ Chromium is unable to recover your settings.
          </message>
- 
+
          <message name="IDS_DICTATION_ONBOARDING_TITLE" desc="The title string in the onboarding dialog for the dictation feature." translateable="false">
 -          Turn your spoken thoughts into polished text with Chromium
 +          Turn your spoken thoughts into polished text with Aster
@@ -2861,7 +2976,7 @@ index e88d88f166..8297ead20e 100644
 +          Use the Aster app to keep browsing on the go
          </message>
        </if>
- 
+
        <!--Default Search Engine Reset Notification-->
        <message name="IDS_DEFAULT_SEARCH_ENGINE_RESET_NOTIFICATION_TITLE"
 -         desc="Title of the notification shown when Chromium resets the default search engine (DSE) due to preference tampering.">
@@ -2878,7 +2993,7 @@ index e88d88f166..8297ead20e 100644
           desc="Label for the 'Got it' button in the default search engine reset notification, which dismisses the UI.">
 @@ -3398,10 +3398,10 @@ Chromium is unable to recover your settings.
        </message>
- 
+
        <!--Report-unsafe-site Dialog (accessed from Help menu)-->
 -      <message name="IDS_REPORT_UNSAFE_SITE_DIALOG_TITLE" desc="Title of the dialog for reporting an unsafe site to Chromium">
 +      <message name="IDS_REPORT_UNSAFE_SITE_DIALOG_TITLE" desc="Title of the dialog for reporting an unsafe site to Aster">
@@ -2890,7 +3005,7 @@ index e88d88f166..8297ead20e 100644
        </message>
        <message name="IDS_REPORT_UNSAFE_SITE_DIALOG_FOOTER" desc="Explanatory text in dialog footer describing what other information is sent as part of the unsafe-site-report.">
 @@ -3410,23 +3410,23 @@ Chromium is unable to recover your settings.
- 
+
        <!-- JS optimizations bubble -->
        <message name="IDS_JS_OPTIMIZATION_BUBBLE_BODY_NON_POLICY_BODY" desc="Body text for the JavaScript optimization bubble when disabled for other reasons.">
 -        For security, Chromium turns off JavaScript optimization when you visit a site for the first time.&#xA;
@@ -2906,7 +3021,7 @@ index e88d88f166..8297ead20e 100644
 -        Sign in to Chromium
 +        Sign in to Aster
        </message>
- 
+
        <!-- Enterprise device signals disclaimer -->
        <message name="IDS_ENTERPRISE_DEVICE_SIGNALS_DISCLAIMER_TITLE" desc="Title of an enterprise device signals collection disclaimer modal dialog. The dialog is shown on Chrome startup to managed Chrome users who have not previously acknowledged device signals collection.">
 -        Your work secured on Chromium
@@ -2918,8 +3033,592 @@ index e88d88f166..8297ead20e 100644
        </message>
      </messages>
    </release>
+diff --git a/chrome/app/settings_chromium_strings.grdp b/chrome/app/settings_chromium_strings.grdp
+index 4fd90b7ebf..f77361e636 100644
+--- a/chrome/app/settings_chromium_strings.grdp
++++ b/chrome/app/settings_chromium_strings.grdp
+@@ -1,10 +1,10 @@
+ <?xml version="1.0" encoding="utf-8"?>
+-<!-- Settings-specific Chromium strings (included from chromium_strings.grd). -->
++<!-- Settings-specific Aster strings (included from chromium_strings.grd). -->
+ <grit-part>
+   <!-- Shared across multiple page -->
+   <if expr="not is_chromeos">
+     <message name="IDS_RELAUNCH_CONFIRMATION_DIALOG_TITLE" desc="The title of the modal dialog that we show when users click on relaunch and they have open Incognito windows. The dialog serves to warn the users about losing their Incognito windows if they proceed with the relaunch.">
+-      Relaunch Chromium?
++      Relaunch Aster?
+     </message>
+   </if>
+   <!-- About Page -->
+@@ -18,26 +18,26 @@
+       </message>
+     </then>
+     <else>
+-      <message name="IDS_SETTINGS_ABOUT_PROGRAM" desc="Menu title for the About Chromium page.">
+-        About Chromium
++      <message name="IDS_SETTINGS_ABOUT_PROGRAM" desc="Menu title for the About Aster page.">
++        About Aster
+       </message>
+       <message name="IDS_SETTINGS_GET_HELP_USING_CHROME" desc="Text of the button which takes the user to the Chrome help page.">
+-        Get help with Chromium
++        Get help with Aster
+       </message>
+     </else>
+   </if>
+   <if expr="not is_chromeos">
+-    <message name="IDS_SETTINGS_UPGRADE_UPDATING" desc="Status label: Updating Chromium">
+-      Updating Chromium
++    <message name="IDS_SETTINGS_UPGRADE_UPDATING" desc="Status label: Updating Aster">
++      Updating Aster
+     </message>
+-    <message name="IDS_SETTINGS_UPGRADE_UPDATING_PERCENT" desc="Status label: Updating Chromium (90%)">
+-      Updating Chromium (<ph name="PROGRESS_PERCENT">$1<ex>90%</ex></ph>)
++    <message name="IDS_SETTINGS_UPGRADE_UPDATING_PERCENT" desc="Status label: Updating Aster (90%)">
++      Updating Aster (<ph name="PROGRESS_PERCENT">$1<ex>90%</ex></ph>)
+     </message>
+-    <message name="IDS_SETTINGS_UPGRADE_SUCCESSFUL_RELAUNCH" desc="Status label: Successfully updated Chromium">
+-      Nearly up to date! Relaunch Chromium to finish updating.
++    <message name="IDS_SETTINGS_UPGRADE_SUCCESSFUL_RELAUNCH" desc="Status label: Successfully updated Aster">
++      Nearly up to date! Relaunch Aster to finish updating.
+     </message>
+-    <message name="IDS_SETTINGS_UPGRADE_UP_TO_DATE" desc="Status label: Already up to date (Chromium)">
+-      Chromium is up to date
++    <message name="IDS_SETTINGS_UPGRADE_UP_TO_DATE" desc="Status label: Already up to date (Aster)">
++      Aster is up to date
+     </message>
+   </if>
+   <if expr="is_chromeos">
+@@ -51,35 +51,35 @@
+
+   <!-- Autofill Page -->
+   <message name="IDS_SETTINGS_SIGNED_OUT_USER_LABEL" desc="Label which is shown at the top of the compromised password section if user is signed out.">
+-    To check if your passwords are safe from data breaches and other security issues, <ph name="BEGIN_LINK">&lt;a target='_blank' href='$1'&gt;</ph>sign in to Chromium<ph name="END_LINK">&lt;/a&gt;</ph>.
++    To check if your passwords are safe from data breaches and other security issues, <ph name="BEGIN_LINK">&lt;a target='_blank' href='$1'&gt;</ph>sign in to Aster<ph name="END_LINK">&lt;/a&gt;</ph>.
+   </message>
+
+   <!-- Enhanced autofill Page-->
+-  <message name="IDS_SETTINGS_AUTOFILL_AI_WHEN_ON_USE_TO_FILL"  desc="Bullet 2 of 2 that appears beneath the “When on” title. “Later”: this is a two-step feature. 1) data is saved, 2) it becomes valuable to the user later when they want to fill in a form with similar data. “Chromium can ask”: the user has a choice, every time, whether their data is saved and also whether they want to autofill their saved info into forms.">
+-    Later, Chromium can ask if you want to use saved info to autofill forms for you
++  <message name="IDS_SETTINGS_AUTOFILL_AI_WHEN_ON_USE_TO_FILL"  desc="Bullet 2 of 2 that appears beneath the “When on” title. “Later”: this is a two-step feature. 1) data is saved, 2) it becomes valuable to the user later when they want to fill in a form with similar data. “Aster can ask”: the user has a choice, every time, whether their data is saved and also whether they want to autofill their saved info into forms.">
++    Later, Aster can ask if you want to use saved info to autofill forms for you
+   </message>
+   <!-- Default Browser Page -->
+   <if expr="not is_chromeos">
+     <message name="IDS_SETTINGS_DEFAULT_BROWSER_DEFAULT" desc="The text displayed when Chrome is the default browser">
+-      Chromium is your default browser
++      Aster is your default browser
+     </message>
+-    <message name="IDS_SETTINGS_DEFAULT_BROWSER_DEFAULT_THANK_YOU" desc="The text displayed when Chromium is the default browser">
+-      Thanks for choosing Chromium as your default browser!
++    <message name="IDS_SETTINGS_DEFAULT_BROWSER_DEFAULT_THANK_YOU" desc="The text displayed when Aster is the default browser">
++      Thanks for choosing Aster as your default browser!
+     </message>
+     <message name="IDS_SETTINGS_DEFAULT_BROWSER_MAKE_DEFAULT" desc="Default browser checkbox label">
+-      Make Chromium the default browser
++      Make Aster the default browser
+     </message>
+-    <message name="IDS_SETTINGS_DEFAULT_BROWSER_MAKE_DEFAULT_USER_VALUE" desc="The text displayed when Chromium is not the default browser. This string describes the effect (user benefit) of setting a browser as the default.">
+-      You can use Chromium anytime you click links in messages, documents, and other apps
++    <message name="IDS_SETTINGS_DEFAULT_BROWSER_MAKE_DEFAULT_USER_VALUE" desc="The text displayed when Aster is not the default browser. This string describes the effect (user benefit) of setting a browser as the default.">
++      You can use Aster anytime you click links in messages, documents, and other apps
+     </message>
+-    <message name="IDS_SETTINGS_DEFAULT_BROWSER_MAKE_DEFAULT_AND_PIN" desc="The text of the button to make Chromium the default browser and pin it to the taskbar.">
+-      Make Chromium the default browser and pin to the taskbar
++    <message name="IDS_SETTINGS_DEFAULT_BROWSER_MAKE_DEFAULT_AND_PIN" desc="The text of the button to make Aster the default browser and pin it to the taskbar.">
++      Make Aster the default browser and pin to the taskbar
+     </message>
+-    <message name="IDS_SETTINGS_DEFAULT_BROWSER_MAKE_DEFAULT_AND_PIN_USER_VALUE" desc="The text of the button to make Chromium the default browser and pin it to the taskbar.">
+-      You can use Chromium anytime you click links in messages, documents, and other apps. It will also be pinned to your taskbar.
++    <message name="IDS_SETTINGS_DEFAULT_BROWSER_MAKE_DEFAULT_AND_PIN_USER_VALUE" desc="The text of the button to make Aster the default browser and pin it to the taskbar.">
++      You can use Aster anytime you click links in messages, documents, and other apps. It will also be pinned to your taskbar.
+     </message>
+     <message name="IDS_SETTINGS_DEFAULT_BROWSER_ERROR" desc="The text displayed when Chrome cannot determine or set the default browser">
+-      Chromium cannot determine or set the default browser
++      Aster cannot determine or set the default browser
+     </message>
+     <if expr="_is_chrome_for_testing_branded">
+       <then>
+@@ -88,8 +88,8 @@
+         </message>
+       </then>
+       <else>
+-        <message name="IDS_SETTINGS_DEFAULT_BROWSER_SECONDARY" desc="The text displayed when Chromium is installed in side-by-side mode, which does not support setting as the default browser.">
+-          This is a secondary installation of Chromium, and cannot be made your default browser.
++        <message name="IDS_SETTINGS_DEFAULT_BROWSER_SECONDARY" desc="The text displayed when Aster is installed in side-by-side mode, which does not support setting as the default browser.">
++          This is a secondary installation of Aster, and cannot be made your default browser.
+         </message>
+       </else>
+     </if>
+@@ -97,355 +97,355 @@
+
+   <!-- Preloading Page-->
+   <message name="IDS_SETTINGS_PRELOAD_PAGES_STANDARD_PRELOADING_WHEN_ON_BULLET_TWO" desc="Bullet point in the standard preloading and when on column. Informs the user about what the standard preloading setting does.">
+-    Chromium preloads pages you're likely to visit, so that they load more quickly when you visit them
++    Aster preloads pages you're likely to visit, so that they load more quickly when you visit them
+   </message>
+   <message name="IDS_SETTINGS_PRELOAD_PAGES_EXTENDED_PRELOADING_WHEN_ON_BULLET_TWO" desc="Bullet point in the extended preloading and when on column. Informs the user about what the extended preloading setting does.">
+-    Chromium preloads even more pages that you're likely to visit, so that they load more quickly when you visit them
++    Aster preloads even more pages that you're likely to visit, so that they load more quickly when you visit them
+   </message>
+   <message name="IDS_SETTINGS_PRELOAD_PAGES_EXTENDED_PRELOADING_THINGS_TO_CONSIDER_BULLET_TWO" desc="Bullet point in the extended preloading and things to consider column. Informs the user about what the extended preloading setting does.">
+-    When a site asks to privately preload links on their page, Chromium uses Google servers. This hides your identity from the preloaded site, but Google learns what sites get preloaded.
++    When a site asks to privately preload links on their page, Aster uses Google servers. This hides your identity from the preloaded site, but Google learns what sites get preloaded.
+   </message>
+   <message name="IDS_SETTINGS_PRELOAD_PAGES_THINGS_TO_CONSIDER_BULLET_ONE" desc="Bullet point in the things to consider column. Informs the user about what the preloading setting does.">
+-    If you allow cookies, Chromium may use them when preloading
++    If you allow cookies, Aster may use them when preloading
+   </message>
+
+   <!-- Privacy Page -->
+   <message name="IDS_SETTINGS_SPELLING_PREF_DESC" desc="Description of using a web serviced to help resolve spelling errors. It is important to convey that what the user types will be sent to Google.">
+-    To fix spelling errors, Chromium sends the text you type in text fields to Google
++    To fix spelling errors, Aster sends the text you type in text fields to Google
+   </message>
+   <message name="IDS_SETTINGS_RESTART_TO_APPLY_CHANGES" desc="Description in the snackbar to restart Chrome and apply changes.">
+-    To apply your changes, relaunch Chromium
++    To apply your changes, relaunch Aster
+   </message>
+
+   <if expr="not is_chromeos">
+     <message name="IDS_SETTINGS_SIGNIN_ALLOWED" desc="The title of the preference to allow to sign-in to Chrome">
+-    Allow Chromium sign-in
++    Allow Aster sign-in
+     </message>
+     <message name="IDS_SETTINGS_SIGNIN_ALLOWED_DESC" desc="The description of the preference to allow to sign-in to Chrome">
+-    By turning this off, you can sign in to Google sites like Gmail without signing in to Chromium
++    By turning this off, you can sign in to Google sites like Gmail without signing in to Aster
+     </message>
+     <message name="IDS_SETTINGS_SIGNIN_ALLOWED_DESC_2" desc="The description of the preference to allow to sign-in to Chrome">
+-    Shows prompts to sign in to Chromium
++    Shows prompts to sign in to Aster
+     </message>
+   </if>
+
+   <!-- Site Settings -->
+   <message name="IDS_SETTINGS_SITE_SETTINGS_PDFS_BLOCKED" desc="Label for the disabled option of the pdfs content setting.">
+-    Open PDFs in Chromium
++    Open PDFs in Aster
+   </message>
+   <message name="IDS_SETTINGS_SITE_SITE_DETAILS_CAMERA_BLOCKED_BY_OS" desc="The description for the camera permission with a link to system settings.">
+-      To use your camera, give Chromium access in <ph name="BEGIN_LINK">&lt;a href="#" id="openSystemSettingsLink" &gt;</ph>system settings<ph name="END_LINK">&lt;/a&gt;<ex>&lt;/a&gt;</ex></ph>
++      To use your camera, give Aster access in <ph name="BEGIN_LINK">&lt;a href="#" id="openSystemSettingsLink" &gt;</ph>system settings<ph name="END_LINK">&lt;/a&gt;<ex>&lt;/a&gt;</ex></ph>
+   </message>
+   <message name="IDS_SETTINGS_SITE_SITE_DETAILS_MICROPHONE_BLOCKED_BY_OS" desc="The description for the microphone permission with a link to system settings.">
+-      To use your microphone, give Chromium access in <ph name="BEGIN_LINK">&lt;a href="#" id="openSystemSettingsLink" &gt;</ph>system settings<ph name="END_LINK">&lt;/a&gt;<ex>&lt;/a&gt;</ex></ph>
++      To use your microphone, give Aster access in <ph name="BEGIN_LINK">&lt;a href="#" id="openSystemSettingsLink" &gt;</ph>system settings<ph name="END_LINK">&lt;/a&gt;<ex>&lt;/a&gt;</ex></ph>
+   </message>
+   <message name="IDS_SETTINGS_SITE_SITE_DETAILS_LOCATION_BLOCKED_BY_OS" desc="The description for the location permission with a link to system settings.">
+-      To use your location, give Chromium access in <ph name="BEGIN_LINK">&lt;a href="#" id="openSystemSettingsLink" &gt;</ph>system settings<ph name="END_LINK">&lt;/a&gt;<ex>&lt;/a&gt;</ex></ph>
++      To use your location, give Aster access in <ph name="BEGIN_LINK">&lt;a href="#" id="openSystemSettingsLink" &gt;</ph>system settings<ph name="END_LINK">&lt;/a&gt;<ex>&lt;/a&gt;</ex></ph>
+   </message>
+   <message name="IDS_SETTINGS_SITE_SETTINGS_CAMERA_BLOCKED_BY_OS" desc="Warning for camera content setting when the camera is disabled on OS level." translateable="false">
+-    To use your camera on these sites, give Chromium access in <ph name="BEGIN_LINK">&lt;a href="#" id="openSystemSettingsLink" &gt;</ph>system settings<ph name="END_LINK">&lt;/a&gt;<ex>&lt;/a&gt;</ex></ph>
++    To use your camera on these sites, give Aster access in <ph name="BEGIN_LINK">&lt;a href="#" id="openSystemSettingsLink" &gt;</ph>system settings<ph name="END_LINK">&lt;/a&gt;<ex>&lt;/a&gt;</ex></ph>
+   </message>
+   <message name="IDS_SETTINGS_SITE_SETTINGS_LOCATION_BLOCKED_BY_OS" desc="Warning for location content setting when the camera is disabled on OS level." translateable="false">
+-    To use your location on these sites, give Chromium access in <ph name="BEGIN_LINK">&lt;a href="#" id="openSystemSettingsLink" &gt;</ph>system settings<ph name="END_LINK">&lt;/a&gt;<ex>&lt;/a&gt;</ex></ph>
++    To use your location on these sites, give Aster access in <ph name="BEGIN_LINK">&lt;a href="#" id="openSystemSettingsLink" &gt;</ph>system settings<ph name="END_LINK">&lt;/a&gt;<ex>&lt;/a&gt;</ex></ph>
+   </message>
+   <message name="IDS_SETTINGS_SITE_SETTINGS_MIC_BLOCKED_BY_OS" desc="Warning for microphone content setting when the camera is disabled on OS level." translateable="false">
+-    To use your microphone on these sites, give Chromium access in <ph name="BEGIN_LINK">&lt;a href="#" id="openSystemSettingsLink" &gt;</ph>system settings<ph name="END_LINK">&lt;/a&gt;<ex>&lt;/a&gt;</ex></ph>
++    To use your microphone on these sites, give Aster access in <ph name="BEGIN_LINK">&lt;a href="#" id="openSystemSettingsLink" &gt;</ph>system settings<ph name="END_LINK">&lt;/a&gt;<ex>&lt;/a&gt;</ex></ph>
+   </message>
+
+     <!-- Site Settings - Site Data Page-->
+   <message name="IDS_SETTINGS_SITE_DATA_PAGE_CLEAR_ON_EXIT_WITH_EXCEPTION_RADIO_SUBLABEL" desc="A description of the benefit/cost of choosing 'Sites can save content on your device. In short, a site will remember your preferences, shopping cart content, etc. during this browser session. But once you close all open windows, and then visit the site again, it's as if you're coming to the site for the first time.">
+-    Sites will probably work as expected. You'll be signed out of most sites when you close all Chromium windows, except your Google Account if you're signed in to Chromium.
++    Sites will probably work as expected. You'll be signed out of most sites when you close all Aster windows, except your Google Account if you're signed in to Aster.
+   </message>
+   <message name="IDS_SETTINGS_SITE_DATA_PAGE_DELETE_ON_EXIT_EXCEPTIONS_SUB_HEADING" desc="2 of 3. A label within 'Customized behaviors' that allows for exceptions to the 'On-device site data' setting. This label and the list of sites that can appear beneath it is only relevant if the user has chosen to allow 'on-device site data' as the default value above.">
+-    Always delete site data from your device when you close Chromium
++    Always delete site data from your device when you close Aster
+   </message>
+
+   <!-- Privacy Guide -->
+   <message name="IDS_SETTINGS_PRIVACY_GUIDE_PROMO_BODY" desc="Body text of a card in the settings page that explains what the 'Privacy Guide' feature is.">
+-    Review key privacy and security controls in Chromium
++    Review key privacy and security controls in Aster
+   </message>
+   <message name="IDS_SETTINGS_PRIVACY_GUIDE_SAFE_BROWSING_CARD_STANDARD_PROTECTION_FEATURE_DESCRIPTION2" desc="A part of the feature description of the standard protection section of the safe browsing card in the 'Privacy Guide'.">
+-    Checks URLs with a list of unsafe sites stored in Chromium
++    Checks URLs with a list of unsafe sites stored in Aster
+   </message>
+   <message name="IDS_SETTINGS_PRIVACY_GUIDE_SAFE_BROWSING_CARD_STANDARD_PROTECTION_PRIVACY_DESCRIPTION1" desc="A part of the privacy description of the standard protection section of the safe browsing card in the 'Privacy Guide'.">
+-    If a site tries to steal your password, or when you download a harmful file, Chromium may also send URLs, including bits of page content, to Safe Browsing
++    If a site tries to steal your password, or when you download a harmful file, Aster may also send URLs, including bits of page content, to Safe Browsing
+   </message>
+   <message name="IDS_SETTINGS_PRIVACY_GUIDE_COMPLETION_CARD_WAA_SUB_LABEL" desc="Text of the Web and App Activity sublabel in the completion card of the 'Privacy Guide'.">
+-    Choose whether to include Chromium history for more personalized experiences in Google services
++    Choose whether to include Aster history for more personalized experiences in Google services
+   </message>
+   <message name="IDS_SETTINGS_PRIVACY_GUIDE_MSBB_FEATURE_DESCRIPTION3" desc="A part of the feature description of 'make searches and browsing better' in the 'Privacy Guide'.">
+-    If you also save your bookmarks in your Google Account, you can track product prices in Chromium and get notified when the price drops
++    If you also save your bookmarks in your Google Account, you can track product prices in Aster and get notified when the price drops
+   </message>
+   <message name="IDS_SETTINGS_PRIVACY_GUIDE_MSBB_PRIVACY_DESCRIPTION2" desc="A part of the privacy description of 'make searches and browsing better' in the 'Privacy Guide'.">
+-    If you also share Chromium usage reports, those reports include the URLs you visit
++    If you also share Aster usage reports, those reports include the URLs you visit
+   </message>
+
+   <!-- Privacy Sandbox -->
+   <message name="IDS_SETTINGS_PRIVACY_SANDBOX_AD_MEASUREMENT_DIALOG_DESCRIPTION" desc="A description of the Ad measurement API. * “Ad measurement” is the name of an API in this context. We don’t use “API” with the user, but they need to know that there is something called “A measurement” and what it does. * “sites you visit”: call the API to get information. The actor is the site, not Chrome. * “restricts cross-site tracking”: Today, with 3rd-party cookies, ad measurement technologies can inadvertently (and intentionally) share considerable information from one site to another). This feature restricts that sharing in order to improve the user’s privacy.">
+-    Ad measurement allows sites you visit to request information from Chromium that helps the site measure the performance of their ads. Ad measurement restricts cross-site tracking by transferring as little information as possible between sites.
++    Ad measurement allows sites you visit to request information from Aster that helps the site measure the performance of their ads. Ad measurement restricts cross-site tracking by transferring as little information as possible between sites.
+   </message>
+
+   <!-- Safety check -->
+   <message name="IDS_SETTINGS_SAFETY_CHECK_UNUSED_SITE_PERMISSIONS_SETTING_SUBLABEL" desc="By default Chrome auto-revokes (disables) permissions (e.g. Camera, Location, etc.) for websites that were not visited for a while. This sublabel is for the toggle that allows users to switch off/on this functionality.">
+-    To protect your data, let Chromium remove permissions from sites you haven't visited recently. Doesn't stop notifications.
++    To protect your data, let Aster remove permissions from sites you haven't visited recently. Doesn't stop notifications.
+   </message>
+     <message name="IDS_SETTINGS_SAFETY_CHECK_UNUSED_SITE_PERMISSIONS_AND_NOTIFICATIONS_SETTING_SUBLABEL" desc="By default Chrome auto-revokes (disables) permissions (e.g. Camera, Location, etc.) for websites that were not visited for a while. This sublabel is for the toggle that allows users to switch off/on this functionality.">
+-    To protect your data, let Chromium remove permissions from sites you haven't visited recently.
++    To protect your data, let Aster remove permissions from sites you haven't visited recently.
+   </message>
+
+   <!-- Safe Browsing -->
+   <message name="IDS_SETTINGS_SAFEBROWSING_ENHANCED_BULLET_TWO" desc="Bullet point under the safe browsing enhanced protection mode">
+-    Keeps you safe on Chromium and may be used to improve your security in other Google apps when you are signed in
++    Keeps you safe on Aster and may be used to improve your security in other Google apps when you are signed in
+   </message>
+   <message name="IDS_SETTINGS_SAFEBROWSING_STANDARD_BULLET_TWO" desc="Bullet point under the safe browsing standard protection mode">
+-    Checks URLs with a list of unsafe sites stored in Chromium. If a site tries to steal your password, or when you download a harmful file, Chromium may also send URLs, including bits of page content, to Safe Browsing.
++    Checks URLs with a list of unsafe sites stored in Aster. If a site tries to steal your password, or when you download a harmful file, Aster may also send URLs, including bits of page content, to Safe Browsing.
+   </message>
+   <message name="IDS_SETTINGS_SAFEBROWSING_ENHANCED_WHEN_ON_BULLET_ONE" desc="Bullet point under the Safe Browsing enhanced protection mode section titled 'When on'">
+-    Warns you about dangerous sites, even ones Google didn't know about before, by analyzing more data from sites than standard protection. You can choose to skip Chromium warnings.
++    Warns you about dangerous sites, even ones Google didn't know about before, by analyzing more data from sites than standard protection. You can choose to skip Aster warnings.
+   </message>
+   <message name="IDS_SETTINGS_SAFEBROWSING_ENHANCED_LEARN_MORE_LABEL" desc="The text for a link to a help center article that gives more information about Safe Browsing.">
+-    Learn more about <ph name="BEGIN_LINK">&lt;a href="#" id="enhancedProtectionLearnMoreLink" on-click="onEnhancedProtectionLearnMoreClick_"&gt;</ph>how Chromium keeps your data private<ph name="END_LINK">&lt;/a&gt;<ex>&lt;/a&gt;</ex></ph>
++    Learn more about <ph name="BEGIN_LINK">&lt;a href="#" id="enhancedProtectionLearnMoreLink" on-click="onEnhancedProtectionLearnMoreClick_"&gt;</ph>how Aster keeps your data private<ph name="END_LINK">&lt;/a&gt;<ex>&lt;/a&gt;</ex></ph>
+   </message>
+   <message name="IDS_SETTINGS_SECURE_DNS_DESCRIPTION" desc="Secondary, continued explanation of secure DNS in Privacy options">
+-    Make it harder for people with access to your internet traffic to see which sites you visit. Chromium uses a secure connection to look up a site's IP address in the DNS (Domain Name System).
++    Make it harder for people with access to your internet traffic to see which sites you visit. Aster uses a secure connection to look up a site's IP address in the DNS (Domain Name System).
+   </message>
+
+   <!-- People Page -->
+   <message name="IDS_SETTINGS_SYNC_DISCONNECT_DELETE_PROFILE_WARNING_WITH_COUNTS_SINGULAR" desc="Warning message displayed in the Sign out of Chrome dialog that indicates profile browsing data will be removed from the device.">
+-    This will delete 1 item from this device. To retrieve your data later, sign in to Chromium as <ph name="USER_EMAIL">$1<ex>foo@example.com</ex></ph>.
++    This will delete 1 item from this device. To retrieve your data later, sign in to Aster as <ph name="USER_EMAIL">$1<ex>foo@example.com</ex></ph>.
+   </message>
+   <message name="IDS_SETTINGS_SYNC_DISCONNECT_DELETE_PROFILE_WARNING_WITH_COUNTS_PLURAL" desc="Warning message displayed in the Sign out of Chrome dialog that indicates profile browsing data will be removed from the device.">
+-    This will delete <ph name="ITEMS_COUNT">$1<ex>66</ex></ph> items from this device. To retrieve your data later, sign in to Chromium as <ph name="USER_EMAIL">$2<ex>foo@example.com</ex></ph>.
++    This will delete <ph name="ITEMS_COUNT">$1<ex>66</ex></ph> items from this device. To retrieve your data later, sign in to Aster as <ph name="USER_EMAIL">$2<ex>foo@example.com</ex></ph>.
+   </message>
+   <message name="IDS_SETTINGS_SYNC_DISCONNECT_DELETE_PROFILE_WARNING_WITHOUT_COUNTS" desc="Warning message displayed in the Sign out of Chrome dialog that indicates profile browsing data will be removed from the device.">
+-    This will delete your browsing data from this device. To retrieve your data later, sign in to Chromium as <ph name="USER_EMAIL">$1<ex>foo@example.com</ex></ph>.
++    This will delete your browsing data from this device. To retrieve your data later, sign in to Aster as <ph name="USER_EMAIL">$1<ex>foo@example.com</ex></ph>.
+   </message>
+ <if expr="not is_chromeos">
+   <message name="IDS_SETTINGS_CUSTOMIZE_YOUR_CHROME_PROFILE" desc="Label of the link that takes you to the page to customize your chrome profile.">
+-    Customize your Chromium profile
++    Customize your Aster profile
+   </message>
+   <message name="IDS_SETTING_NAME_YOUR_PROFILE" desc="Title of the edit local profile name section on the manage profile page.">
+-    Name your Chromium profile
++    Name your Aster profile
+   </message>
+ </if>
+-  <message name="IDS_SETTINGS_PEOPLE_SIGN_IN_PROMPT_SECONDARY_WITH_ACCOUNT" desc="The secondary text displayed to prompt users to enable sync for an account that is alredy present in Chromium.">
+-    Sync and personalize Chromium across your devices
++  <message name="IDS_SETTINGS_PEOPLE_SIGN_IN_PROMPT_SECONDARY_WITH_ACCOUNT" desc="The secondary text displayed to prompt users to enable sync for an account that is alredy present in Aster.">
++    Sync and personalize Aster across your devices
+   </message>
+-  <message name="IDS_SETTINGS_PEOPLE_EXPLICIT_SIGN_IN_PROMPT_SECONDARY_WITH_NO_ACCOUNT" desc="The secondary text displayed to prompt users to enable sync for an account that is already present in Chromium.">
+-    To get your passwords and more on all your devices, sign in to Chromium
++  <message name="IDS_SETTINGS_PEOPLE_EXPLICIT_SIGN_IN_PROMPT_SECONDARY_WITH_NO_ACCOUNT" desc="The secondary text displayed to prompt users to enable sync for an account that is already present in Aster.">
++    To get your passwords and more on all your devices, sign in to Aster
+   </message>
+-  <message name="IDS_SETTINGS_PEOPLE_EXPLICIT_SIGN_IN_PROMPT_SECONDARY_WITH_NO_ACCOUNT_WITH_BOOKMARKS" desc="The secondary text displayed to prompt users to enable sync for an account that is already present in Chromium.">
+-    To get your passwords, bookmarks, and more on all your devices, sign in to Chromium
++  <message name="IDS_SETTINGS_PEOPLE_EXPLICIT_SIGN_IN_PROMPT_SECONDARY_WITH_NO_ACCOUNT_WITH_BOOKMARKS" desc="The secondary text displayed to prompt users to enable sync for an account that is already present in Aster.">
++    To get your passwords, bookmarks, and more on all your devices, sign in to Aster
+   </message>
+   <message name="IDS_SETTINGS_PEOPLE_ACCOUNT_AWARE_SIGNIN_ACCOUNT_ROW_TITLE" desc="The title of the avatar row shown to users who are signed in only to the web">
+-    Your Chromium
++    Your Aster
+   </message>
+ <if expr="is_chromeos">
+   <message name="IDS_SETTINGS_ACCOUNT_MANAGER_DESCRIPTION_V2" desc="Description of the Account Manager Settings page. Shown just below the title of the page.">
+-    You can manage your signed-in Google Accounts. Your Google Accounts are used for Chromium browser, Play Store, Gmail, and more. If you want to add an account for someone else, like a family member, add a new person to your <ph name="DEVICE_TYPE">$1<ex>Chromebook</ex></ph> instead. <ph name="LINK_BEGIN">&lt;a&gt;</ph>Learn more<ph name="LINK_END">&lt;/a&gt;</ph>
++    You can manage your signed-in Google Accounts. Your Google Accounts are used for Aster browser, Play Store, Gmail, and more. If you want to add an account for someone else, like a family member, add a new person to your <ph name="DEVICE_TYPE">$1<ex>Chromebook</ex></ph> instead. <ph name="LINK_BEGIN">&lt;a&gt;</ph>Learn more<ph name="LINK_END">&lt;/a&gt;</ph>
+   </message>
+ </if>
+-  <message name="IDS_SETTINGS_SIGNIN_CHROME_SIGNIN_OPTIONS_TITLE" desc="Title of the settings that controls whether a user gets signed in to Chromium when signing in to Google Services.">
+-    Sign in to Chromium when you sign in to other Google services
++  <message name="IDS_SETTINGS_SIGNIN_CHROME_SIGNIN_OPTIONS_TITLE" desc="Title of the settings that controls whether a user gets signed in to Aster when signing in to Google Services.">
++    Sign in to Aster when you sign in to other Google services
+   </message>
+-  <message name="IDS_SETTINGS_SIGNIN_CHROME_SIGNIN_OPTIONS_DESC" desc="Description of the settings that controls whether a user gets signed in to Chromium when signing in to Google Services.">
+-    When signing into Google services like Gmail or Youtube with <ph name="USER_EMAIL">$1<ex>foo@example.com</ex></ph>, you can automatically sign in to Chromium with the same account
++  <message name="IDS_SETTINGS_SIGNIN_CHROME_SIGNIN_OPTIONS_DESC" desc="Description of the settings that controls whether a user gets signed in to Aster when signing in to Google Services.">
++    When signing into Google services like Gmail or Youtube with <ph name="USER_EMAIL">$1<ex>foo@example.com</ex></ph>, you can automatically sign in to Aster with the same account
+   </message>
+-  <message name="IDS_SETTINGS_PEOPLE_SIGNIN_SECTION_SIGNED_OUT_TITLE" desc="The text displayed to prompt users to sign in to Chromium. Shown on top of the account card in the people settings page when the user is signed out.">
+-    Make Chromium your own
++  <message name="IDS_SETTINGS_PEOPLE_SIGNIN_SECTION_SIGNED_OUT_TITLE" desc="The text displayed to prompt users to sign in to Aster. Shown on top of the account card in the people settings page when the user is signed out.">
++    Make Aster your own
+   </message>
+
+   <!-- Sync Page / Account Settings Page -->
+   <message name="IDS_SETTINGS_SYNC_DATA_ENCRYPTED_TEXT" desc="Text alerting the user that synced data is encrypted.">
+-    For added security, Chromium will encrypt your data.
++    For added security, Aster will encrypt your data.
+   </message>
+   <message name="IDS_SETTINGS_SYNC_DISCONNECT_TITLE" desc="The title of the dialog to stop syncing and sign out.">
+-    Sign out of Chromium?
++    Sign out of Aster?
+   </message>
+   <message name="IDS_SETTINGS_SUGGEST_PREF_DESC" desc="The description of the checkbox to enable/disable sending omnibox input to the user's default search engine to get additional suggestions.">
+-    When you type in the address bar or search box, Chromium sends what you type to your default search engine to get better suggestions. This is off in Incognito.
++    When you type in the address bar or search box, Aster sends what you type to your default search engine to get better suggestions. This is off in Incognito.
+   </message>
+   <message name="IDS_SETTINGS_SEARCH_AGGREGATOR_PREF_DESC" desc="The description of the 'Show suggestions and results from your organization' checkbox, which enables/disables sending omnibox input to the user's organization's search aggregator to get additional suggestions. Note that this setting is controlled by enterprise policy and, while a checkbox is shown, it is always enabled and cannot be disabled.">
+-    When you type in the address bar or search box, Chromium sends what you type to your organization's search, AI, and agent tools to get suggestions.
++    When you type in the address bar or search box, Aster sends what you type to your organization's search, AI, and agent tools to get suggestions.
+   </message>
+   <message name="IDS_SETTINGS_PERSONALIZE_GOOGLE_SERVICES_DESC" desc="This is the subtitle of a setting that directs users to other settings where they can control how Chrome history can be used to personalize other Google services. This subtitle appears in Chrome's Advanced Sync settings, after the 'Control how browsing history is used with your other data across Google services' string. The 'Web &#38; App Activity' text should match the branded term in Glossary Manager: https://localization.google.com/glossary/termset?gid=27517723&#38;tsid=77d3b75.">
+-    To get personalization, include Chromium in Web &#38; App Activity
++    To get personalization, include Aster in Web &#38; App Activity
+   </message>
+   <message name="IDS_SETTINGS_PERSONALIZE_GOOGLE_SERVICES_DESC_WITH_LINKED_SERVICES" desc="This is the subtitle of a setting that directs users to other settings where they can control how Chrome history can be used to personalize other Google services. This subtitle appears in Chrome's Advanced Sync settings, after the 'Control how browsing history is used with your other data across Google services' string. The 'Web &#38; App Activity' text should match the branded term in Glossary Manager: https://localization.google.com/glossary/termset?gid=27517723&#38;tsid=77d3b75. The 'linked Google services' text should match the branded term in Glossary Manager: https://localization.google.com/glossary/termset?gid=27517723&#38;tsid=517bace2.">
+-    To get personalization and other features, include Chromium in Web &#38; App Activity and linked Google services
++    To get personalization and other features, include Aster in Web &#38; App Activity and linked Google services
+   </message>
+   <message name="IDS_SETTINGS_PERSONALIZE_GOOGLE_SERVICES_LINKED_SERVICES_DESC" desc="This is the subtitle of a setting that links to 'Linked Google services' in the Google Account's Data &#38; privacy settings. This subtitle appears in Chrome's Advanced Sync settings and is after the 'Linked Google services' string.">
+-    Link Chromium and other Google services for personalization and other purposes
++    Link Aster and other Google services for personalization and other purposes
+   </message>
+     <message name="IDS_SETTINGS_ERROR_PASSPHRASE_USER_ERROR_DESCRIPTION" desc="Subtitle of settings page that indicates user must re-enter their sync password.">
+-    To use and save Chromium data in your Google Account, enter your passphrase
++    To use and save Aster data in your Google Account, enter your passphrase
+   </message>
+   <message name="IDS_SETTINGS_ERROR_TRUSTED_VAULT_USER_ERROR_DESCRIPTION" desc="Error description of the sync/signin error header of the settings page.">
+-    To use and save Chromium data in your Google Account, verify it's you
++    To use and save Aster data in your Google Account, verify it's you
+   </message>
+     <message name="IDS_SETTINGS_ERROR_UPGRADE_CLIENT_USER_ERROR_DESCRIPTION" desc="Error message to resolve sync protocol error for out-of-date client.">
+-    To use and save Chromium data in your Google Account, update Chromium
++    To use and save Aster data in your Google Account, update Aster
+   </message>
+   <message name="IDS_SETTINGS_PENDING_STATE_DESCRIPTION" desc="Subtitle of settings page that indicates user is in pending state and should sign in.">
+-    Verify it's you to use and save Chromium data in your account, <ph name="ACCOUNT_EMAIL">$1<ex>elisa.beckett@gmail.com</ex></ph>
++    Verify it's you to use and save Aster data in your account, <ph name="ACCOUNT_EMAIL">$1<ex>elisa.beckett@gmail.com</ex></ph>
+   </message>
+   <message name="IDS_SETTINGS_ERROR_PASSPHRASE_USER_ERROR_DESCRIPTION_WITH_EMAIL" desc="Subtitle of settings page that indicates user must re-enter their sync password.">
+-    Enter your passphrase to use and save Chromium data in your account, <ph name="USER_EMAIL">$1<ex>foo@example.com</ex></ph>
++    Enter your passphrase to use and save Aster data in your account, <ph name="USER_EMAIL">$1<ex>foo@example.com</ex></ph>
+   </message>
+   <message name="IDS_SETTINGS_SIGN_OUT" desc="The text label of the Sign out of Chrome button in the settings page.">
+-    Sign out of Chromium
++    Sign out of Aster
+   </message>
+-  <message name="IDS_SETTINGS_ACCOUNT_DATA_DASHBOARD" desc="This string is found in the Account settings page in Chromium settings to let a user manage the Chromium data that they've saved in their Google Account. It is important that it is consistent with the destination's title 'Chrome data in your account' (except using 'Chromium' instead of 'Chrome') (TC ID 2983573066282140756).">
+-    Chromium data in your account
++  <message name="IDS_SETTINGS_ACCOUNT_DATA_DASHBOARD" desc="This string is found in the Account settings page in Aster settings to let a user manage the Aster data that they've saved in their Google Account. It is important that it is consistent with the destination's title 'Chrome data in your account' (except using 'Aster' instead of 'Chrome') (TC ID 2983573066282140756).">
++    Aster data in your account
+   </message>
+   <message name="IDS_SETTINGS_ENCRYPT_ACCOUNT_DATA_WITH_PASSPHRASE_LABEL" desc="Label for the radio button which, when selected, causes synced settings to be encrypted with a user-provided password.">
+-    Use your <ph name="BEGIN_LINK">&lt;a href="$1" target=&quot;_blank&quot;&gt;<ex>&lt;a href="$1" target=&quot;_blank&quot;&gt;</ex></ph>own passphrase<ph name="END_LINK">&lt;/a&gt;<ex>&lt;/a&gt;</ex></ph> to encrypt all the Chromium data in your Google Account. Payment methods and addresses from Google Pay won’t be encrypted. Browsing history from Chromium won’t sync.
++    Use your <ph name="BEGIN_LINK">&lt;a href="$1" target=&quot;_blank&quot;&gt;<ex>&lt;a href="$1" target=&quot;_blank&quot;&gt;</ex></ph>own passphrase<ph name="END_LINK">&lt;/a&gt;<ex>&lt;/a&gt;</ex></ph> to encrypt all the Aster data in your Google Account. Payment methods and addresses from Google Pay won’t be encrypted. Browsing history from Aster won’t sync.
+   </message>
+   <message name="IDS_SETTINGS_ENCRYPT_ACCOUNT_DATA_WITH_PASSPHRASE_EXPLANATION_TEXT" desc="Message shown when explicit passphrase is selected.">
+-    Only someone with your passphrase can read your encrypted data. The passphrase is not sent to or stored by Google. If you forget your passphrase or want to change this setting, you’ll need to <ph name="BEGIN_LINK">&lt;a href="$1" target=&quot;_blank&quot;&gt;<ex>&lt;a href="$1" target=&quot;_blank&quot;&gt;</ex></ph>delete the Chromium data in your account<ph name="END_LINK">&lt;/a&gt;<ex>&lt;/a&gt;</ex></ph>.
++    Only someone with your passphrase can read your encrypted data. The passphrase is not sent to or stored by Google. If you forget your passphrase or want to change this setting, you’ll need to <ph name="BEGIN_LINK">&lt;a href="$1" target=&quot;_blank&quot;&gt;<ex>&lt;a href="$1" target=&quot;_blank&quot;&gt;</ex></ph>delete the Aster data in your account<ph name="END_LINK">&lt;/a&gt;<ex>&lt;/a&gt;</ex></ph>.
+   </message>
+   <message name="IDS_SETTINGS_PASSPHRASE_RESET_HINT_ACCOUNT_DATA_ENCRYPTION" desc="Informs user how to change their encryption setting.">
+-    If you forgot your passphrase or want to change this setting, <ph name="BEGIN_LINK">&lt;a href="$1" target=&quot;_blank&quot;&gt;<ex>&lt;a href="$1" target=&quot;_blank&quot;&gt;</ex></ph>delete the Chromium data in your account<ph name="END_LINK">&lt;/a&gt;<ex>&lt;/a&gt;</ex></ph>
++    If you forgot your passphrase or want to change this setting, <ph name="BEGIN_LINK">&lt;a href="$1" target=&quot;_blank&quot;&gt;<ex>&lt;a href="$1" target=&quot;_blank&quot;&gt;</ex></ph>delete the Aster data in your account<ph name="END_LINK">&lt;/a&gt;<ex>&lt;/a&gt;</ex></ph>
+   </message>
+
+   <!-- Performance Page -->
+   <message name="IDS_SETTINGS_PERFORMANCE_MEMORY_SAVER_MODE_SETTING_DESCRIPTION" desc="Description for the memory saver mode setting">
+-    Chromium frees up memory from inactive tabs. This gives active tabs and other apps more computer resources and keeps Chromium fast. Your inactive tabs automatically become active again when you go back to them. <ph name="BEGIN_LINK">&lt;a href="$1" target="_blank" id="learn-more" aria-description="$2"&gt;</ph>Learn more about Memory Saver<ph name="END_LINK">&lt;/a&gt;</ph>
++    Aster frees up memory from inactive tabs. This gives active tabs and other apps more computer resources and keeps Aster fast. Your inactive tabs automatically become active again when you go back to them. <ph name="BEGIN_LINK">&lt;a href="$1" target="_blank" id="learn-more" aria-description="$2"&gt;</ph>Learn more about Memory Saver<ph name="END_LINK">&lt;/a&gt;</ph>
+   </message>
+   <message name="IDS_SETTINGS_PERFORMANCE_BATTERY_SAVER_MODE_SETTING_DESCRIPTION" desc="Description for the energy saver mode setting">
+-    Chromium conserves battery power by limiting background activity and visual effects, such as smooth scrolling and video frame rates. <ph name="BEGIN_LINK">&lt;a href="$1" target="_blank" id="learn-more" aria-description="$2"&gt;</ph>Learn more about Energy Saver<ph name="END_LINK">&lt;/a&gt;</ph>
++    Aster conserves battery power by limiting background activity and visual effects, such as smooth scrolling and video frame rates. <ph name="BEGIN_LINK">&lt;a href="$1" target="_blank" id="learn-more" aria-description="$2"&gt;</ph>Learn more about Energy Saver<ph name="END_LINK">&lt;/a&gt;</ph>
+   </message>
+   <message name="IDS_SETTINGS_PERFORMANCE_PRELOAD_TOGGLE_SUMMARY" desc="Summary for the preload pages setting">
+-    Chromium preloads pages which makes browsing and searching faster. <ph name="BEGIN_LINK">&lt;a href="$1" target="_blank" id="learn-more" aria-description="$2"&gt;</ph>Learn more about preload pages<ph name="END_LINK">&lt;/a&gt;</ph>
++    Aster preloads pages which makes browsing and searching faster. <ph name="BEGIN_LINK">&lt;a href="$1" target="_blank" id="learn-more" aria-description="$2"&gt;</ph>Learn more about preload pages<ph name="END_LINK">&lt;/a&gt;</ph>
+   </message>
+
+   <!-- Languages Page -->
+   <if expr="is_win">
+     <message name="IDS_SETTINGS_LANGUAGES_IS_DISPLAYED_IN_THIS_LANGUAGE" desc="The label for a language that is currently used as the UI display language.">
+-      This language is used to display menus, settings, alerts, and other text in Chromium
++      This language is used to display menus, settings, alerts, and other text in Aster
+     </message>
+     <message name="IDS_SETTINGS_LANGUAGES_DISPLAY_IN_THIS_LANGUAGE" desc="The label used for a button that changes the UI language.">
+-      Display Chromium in this language
++      Display Aster in this language
+     </message>
+   </if>
+
+   <!-- System Page -->
+   <if expr="not is_chromeos">
+     <message name="IDS_SETTINGS_SYSTEM_BACKGROUND_APPS_LABEL" desc="Label for the checkbox to allow apps to run in the background, when Chrome is closed.">
+-      Continue running background apps when Chromium is closed
++      Continue running background apps when Aster is closed
+     </message>
+   </if>
+
+   <!-- Reset Page -->
+   <message name="IDS_SETTINGS_RESET_PROFILE_FEEDBACK" desc="Feedback label in the Reset Profile Settings dialog">
+-    Help make Chromium better by reporting the <ph name="BEGIN_LINK">&lt;a is="action-link" target="_blank"&gt;</ph>current settings<ph name="END_LINK">&lt;/a&gt;</ph>
++    Help make Aster better by reporting the <ph name="BEGIN_LINK">&lt;a is="action-link" target="_blank"&gt;</ph>current settings<ph name="END_LINK">&lt;/a&gt;</ph>
+   </message>
+
+   <!-- Safety Hub -->
+-  <message name="IDS_SETTINGS_SAFETY_HUB_ENTRY_POINT_NOTHING_TO_DO" desc="This text describes what Safety Hub does (regularly checking whether Chromium settings are safe) and indicates whether the user should take action. This text is shown when Safety Hub has not identified any issues at this time. There is nothing to do for the user. As future checks of Safety Hub may identify issues, this state may change. This text is shown on a card in privacy settings next to a button that leads to Safety Hub.">
+-    Chromium regularly checks to make sure your browser has the safest settings. We'll let you know if anything needs your review.
++  <message name="IDS_SETTINGS_SAFETY_HUB_ENTRY_POINT_NOTHING_TO_DO" desc="This text describes what Safety Hub does (regularly checking whether Aster settings are safe) and indicates whether the user should take action. This text is shown when Safety Hub has not identified any issues at this time. There is nothing to do for the user. As future checks of Safety Hub may identify issues, this state may change. This text is shown on a card in privacy settings next to a button that leads to Safety Hub.">
++    Aster regularly checks to make sure your browser has the safest settings. We'll let you know if anything needs your review.
+   </message>
+   <message name="IDS_SETTINGS_SAFETY_HUB_ENTRY_POINT_HEADER" desc="Title of a row in Chrome's privacy settings (chrome://settings/privacy) explaining that Chrome recommends for the user to take action to improve their safety. Next to this text there is a button labeled 'Go to SafetyHub' that will take users to a dedicated page where users can take action.">
+-    Chromium found some safety recommendations for your review
++    Aster found some safety recommendations for your review
+   </message>
+   <message name="IDS_SETTINGS_SAFETY_HUB_EMPTY_STATE_MODULE_SUBHEADER" desc="The header of the 'Empty State Module' in the Safety Hub page. The 'Empty State Module' is visible if there is no safety recommendation.">
+-    Chromium will let you know if anything needs your review
++    Aster will let you know if anything needs your review
+   </message>
+-  <message name="IDS_SETTINGS_SAFETY_HUB_VERSION_MODULE_UPPERCASE_NAME" desc="The entry point shown on the screenshot leads to Safety Check settings page (chrome://settings/safetyCheck) when at least on of the SC modules have recommendations. The subheader of the entry point lists the modules with recommendations. This string is the upper case version (i.e. version that comes first in the sentence) for the name of Chromium update module.">
+-    Chromium update
++  <message name="IDS_SETTINGS_SAFETY_HUB_VERSION_MODULE_UPPERCASE_NAME" desc="The entry point shown on the screenshot leads to Safety Check settings page (chrome://settings/safetyCheck) when at least on of the SC modules have recommendations. The subheader of the entry point lists the modules with recommendations. This string is the upper case version (i.e. version that comes first in the sentence) for the name of Aster update module.">
++    Aster update
+   </message>
+-  <message name="IDS_SETTINGS_SAFETY_HUB_VERSION_MODULE_LOWERCASE_NAME" desc="The entry point shown on the screenshot leads to Safety Check settings page (chrome://settings/safetyCheck) when at least on of the SC modules have recommendations. The subheader of the entry point lists the modules with recommendations. This string is the lower case version (i.e. version that comes in the middle of the sentence) for the name of Chromium update module.">
+-    Chromium update
++  <message name="IDS_SETTINGS_SAFETY_HUB_VERSION_MODULE_LOWERCASE_NAME" desc="The entry point shown on the screenshot leads to Safety Check settings page (chrome://settings/safetyCheck) when at least on of the SC modules have recommendations. The subheader of the entry point lists the modules with recommendations. This string is the lower case version (i.e. version that comes in the middle of the sentence) for the name of Aster update module.">
++    Aster update
+   </message>
+   <message name="IDS_SETTINGS_SAFETY_HUB_PASSWORD_CHECK_SUBHEADER_NO_PASSWORDS" desc="This text explains that passwords saved in Chrome are automatically checked for issues (e.g. password is leaked or weak) by SafetyHub. However the user does not have any passwords stored in Chrome, therefore the feature does not operate. This text is shown as a subtitle of the passwords card of SafetyHub. It sits below the title 'No saved passwords'.">
+-    Chromium can check your passwords when you save them
++    Aster can check your passwords when you save them
+   </message>
+   <message name="IDS_SETTINGS_SAFETY_HUB_USER_EDU_MODULE_HEADER" desc="The header of the 'User Education Module' in the Safety Hub page. The 'User Education Module' is visible if there is no safety recommendation and gives information about some Chrome features.">
+-    Learn how Chromium keeps you safe
++    Learn how Aster keeps you safe
+   </message>
+   <message name="IDS_SETTINGS_SAFETY_HUB_USER_EDU_DATA_HEADER" desc="The header of the first item in the 'User Education Module' in the Safety Hub page. This item explains how Chrome's tools help user to keep their data safe.">
+-    Chromium's safety tools
++    Aster's safety tools
+   </message>
+   <message name="IDS_SETTINGS_SAFETY_HUB_USER_EDU_DATA_SUBHEADER" desc="The subheader of the first item in the 'User Education Module' in the Safety Hub page. This item explains how Chrome's tools help user to keep their data safe.">
+-    With <ph name="BEGIN_LINK">&lt;a href="$1" target="_blank"&gt;</ph>tools from Chromium<ph name="END_LINK">&lt;/a&gt;</ph>, you can browse safely and stay in control
++    With <ph name="BEGIN_LINK">&lt;a href="$1" target="_blank"&gt;</ph>tools from Aster<ph name="END_LINK">&lt;/a&gt;</ph>, you can browse safely and stay in control
+   </message>
+   <message name="IDS_SETTINGS_SAFETY_HUB_USER_EDU_INCOGNITO_HEADER" desc="The header of the second item in the 'User Education Module' in the Safety Hub page. This item explains Incognito mode.">
+-    Chromium Incognito
++    Aster Incognito
+   </message>
+   <message name="IDS_SETTINGS_SAFETY_HUB_USER_EDU_SAFE_BROWSING_SUBHEADER" desc="The header of the second item in the 'User Education Module' in the Safety Hub page. This item explains Safe Browsing.">
+-    <ph name="BEGIN_LINK">&lt;a href="$1" target="_blank"&gt;</ph>Chromium warns you<ph name="END_LINK">&lt;/a&gt;</ph> about unsafe sites and downloads
++    <ph name="BEGIN_LINK">&lt;a href="$1" target="_blank"&gt;</ph>Aster warns you<ph name="END_LINK">&lt;/a&gt;</ph> about unsafe sites and downloads
+   </message>
+   <if expr="not is_chromeos">
+     <message name="IDS_SETTINGS_SAFETY_HUB_VERSION_CARD_HEADER_RESTART" desc="Safety Hub settings page (chrome://settings/safetyHub) gives users an overview over their safety status. The version card, which this text is a part of, informs the user whether their Chrome is up to date. This title of the card is shown when Chrome is not up to date but there is an update available and the user needs to restart their browser to finish the update. Shown above the subtitle 'Relaunch to finish update. Your tabs will reopen'.">
+-      Chromium is out of date
++      Aster is out of date
+     </message>
+     <message name="IDS_SETTINGS_SAFETY_HUB_VERSION_CARD_HEADER_UPDATED" desc="Safety Hub settings page (chrome://settings/safetyHub) gives users an overview over their safety status. The version card, which this text is a part of, informs the user whether their Chrome is up to date. This title of the card is shown when Chrome is up to date and the user does not need to take any action. Shown above the subtitle that is the Chrome version.">
+-      Chromium is up to date
++      Aster is up to date
+     </message>
+   </if>
+   <message name="IDS_SETTINGS_SAFETY_HUB_VERSION_NAVIGATION_ARIA_LABEL" desc="Safety Check settings page (chrome://settings/safetyCheck) gives users an overview over their safety status. The version card, which this text is a part of, informs the user whether their Chrome is up to date. This string is for the accesibility label for the card to call out where to navigation will happen (chrome://settings/help) if the card is clicked.">
+-    Go to About Chromium page
++    Go to About Aster page
+   </message>
+   <message name="IDS_SETTINGS_SAFETY_HUB_VERSION_RELAUNCH_ARIA_LABEL" desc="Safety Check settings page (chrome://settings/safetyCheck) gives users an overview over their safety status. The version card, which this text is a part of, informs the user whether their Chrome is up to date. This string is for the accesibility label for the card to call out the click on card will result restarting the browser.">
+-    Relaunch Chromium
++    Relaunch Aster
+   </message>
+   <message name="IDS_SETTINGS_SAFETY_HUB_UNUSED_SITE_PERMISSIONS_REMOVED_ONE_PERMISSION_LABEL" desc="'Revoked Permissions' shows the revoked permissions of unused websites. This text describes which permission was removed from an unused site and is shown if there is exactly one permission.">
+-    You haven't visited recently. Chromium removed <ph name="PERMISSION">$1<ex>location</ex></ph>.
++    You haven't visited recently. Aster removed <ph name="PERMISSION">$1<ex>location</ex></ph>.
+   </message>
+   <message name="IDS_SETTINGS_SAFETY_HUB_UNUSED_SITE_PERMISSIONS_REMOVED_TWO_PERMISSIONS_LABEL" desc="'Revoked Permissions' shows the revoked permissions of unused websites. This text describes which permissions were removed from an unused site and is shown if there are exactly two permissions.">
+-    You haven't visited recently. Chromium removed <ph name="PERMISSION_1">$1<ex>location</ex></ph>, <ph name="PERMISSION_2">$2<ex>notifications</ex></ph>.
++    You haven't visited recently. Aster removed <ph name="PERMISSION_1">$1<ex>location</ex></ph>, <ph name="PERMISSION_2">$2<ex>notifications</ex></ph>.
+   </message>
+   <message name="IDS_SETTINGS_SAFETY_HUB_UNUSED_SITE_PERMISSIONS_REMOVED_THREE_PERMISSIONS_LABEL" desc="'Revoked Permissions' shows the revoked permissions of unused websites. This text describes which permissions were removed from an unused site and is shown if there are exactly three permissions.">
+-    You haven't visited recently. Chromium removed <ph name="PERMISSION_1">$1<ex>location</ex></ph>, <ph name="PERMISSION_2">$2<ex>notifications</ex></ph>, <ph name="PERMISSION_3">$3<ex>camera</ex></ph>.
++    You haven't visited recently. Aster removed <ph name="PERMISSION_1">$1<ex>location</ex></ph>, <ph name="PERMISSION_2">$2<ex>notifications</ex></ph>, <ph name="PERMISSION_3">$3<ex>camera</ex></ph>.
+   </message>
+   <message name="IDS_SETTINGS_SAFETY_HUB_UNUSED_SITE_PERMISSIONS_REMOVED_FOUR_OR_MORE_PERMISSIONS_LABEL" desc="'Revoked Permissions' shows the revoked permissions of unused websites. This text describes which permissions were removed from an unused site and is shown if there are four or more permissions. The number indicates the count of permisions that are not shown explicitly. The number is always two or larger.">
+-    You haven't visited recently. Chromium removed <ph name="PERMISSION_1">$1<ex>location</ex></ph>, <ph name="PERMISSION_2">$2<ex>notifications</ex></ph>, and <ph name="COUNT">$3<ex>2</ex></ph> more.
++    You haven't visited recently. Aster removed <ph name="PERMISSION_1">$1<ex>location</ex></ph>, <ph name="PERMISSION_2">$2<ex>notifications</ex></ph>, and <ph name="COUNT">$3<ex>2</ex></ph> more.
+   </message>
+   <message name="IDS_SETTINGS_SAFETY_HUB_ABUSIVE_NOTIFICATION_PERMISSIONS_SETTING_SUBLABEL" desc="'Revoked Permissions' module shows the revoked permissions of websites. This text describes that abusive notification permissions were removed.">
+-    Dangerous site. Chromium removed notifications.
++    Dangerous site. Aster removed notifications.
+   </message>
+
+   <!-- Bundled Security Settings (chrome://settings/security) -->
+   <message name="IDS_SETTINGS_SECURITY_PASSWORDS_LEAK_DETECTION_DESC" desc="Text that briefly describes the 'Password Leak Detection' feature.">
+-    Get warned if Chromium finds one of your passwords in a public data breach
++    Get warned if Aster finds one of your passwords in a public data breach
+   </message>
+   <message name="IDS_SETTINGS_SECURITY_SAFE_BROWSING_STANDARD_HOW_IT_WORKS_CONTENT" desc="Content of the Safe Browsing standard protection column describing how it works">
+-    When you visit a site, Chromium sends an obfuscated portion of the URL to <ph name="BEGIN_LINK">&lt;a target="_blank" href="https://safebrowsing.google.com/"&gt;</ph>Google Safe Browsing<ph name="END_LINK">&lt;/a&gt;</ph> through a privacy server that hides your IP address. If a site does something suspicious, full URLs and bits of page content are also sent.
++    When you visit a site, Aster sends an obfuscated portion of the URL to <ph name="BEGIN_LINK">&lt;a target="_blank" href="https://safebrowsing.google.com/"&gt;</ph>Google Safe Browsing<ph name="END_LINK">&lt;/a&gt;</ph> through a privacy server that hides your IP address. If a site does something suspicious, full URLs and bits of page content are also sent.
+   </message>
+   <message name="IDS_SETTINGS_SECURITY_JAVASCRIPT_GUARDRAILS_UNRECOGNIZED_SITES_DESCRIPTION" desc="Description of JavaScript Guardrails unrecognized sites option.">
+-    Enhanced protection turns off JavaScript optimization for sites Chromium doesn’t recognize
++    Enhanced protection turns off JavaScript optimization for sites Aster doesn’t recognize
+   </message>
+   <message name="IDS_SETTINGS_SECURITY_BUNDLE_ENHANCED_BULLET_ONE" desc="First bullet point under the security settings enhanced bundle section">
+-    Turns on additional features to provide Chromium’s strongest protections
++    Turns on additional features to provide Aster’s strongest protections
+   </message>
+
+   <!-- Secure connections -->
+   <message name="IDS_SETTINGS_SECURE_CONNECTIONS_SECTION_DESCRIPTION" desc="Description for the Secure Connections section in Security settings, explaining the baseline behavior of the browser even if the 'Always use secure connections' toggle is disabled.">
+-    Chromium upgrades insecure connections to HTTPS automatically when possible
++    Aster upgrades insecure connections to HTTPS automatically when possible
+   </message>
+   <message name="IDS_SETTINGS_HTTPS_FIRST_MODE_SUBTITLE" desc="Subtitle for HTTPS-First Mode section in Security settings">
+-    Chromium will try to upgrade navigations to HTTPS
++    Aster will try to upgrade navigations to HTTPS
+   </message>
+   <message name="IDS_SETTINGS_HTTPS_FIRST_MODE_ENABLED_FULL_SUBLABEL" desc="Sublabel for radio button to fully enable HTTPS-First Mode">
+-    Chromium will warn you before loading any site using an insecure connection
++    Aster will warn you before loading any site using an insecure connection
+   </message>
+   <message name="IDS_SETTINGS_HTTPS_FIRST_MODE_ENABLED_INCOGNITO_SUBLABEL" desc="Sublabel for radio button to enable HTTPS-First Mode in Incognito">
+-    When browsing in Incognito mode, Chromium will warn you before loading a site using an insecure connection
++    When browsing in Incognito mode, Aster will warn you before loading a site using an insecure connection
+   </message>
+   <message name="IDS_SETTINGS_HTTPS_FIRST_MODE_DISABLED_SUBLABEL" desc="Sublabel for radio button to disable HTTPS-First Mode">
+-    When HTTPS isn't available, Chromium will use an insecure connection without warning you
++    When HTTPS isn't available, Aster will use an insecure connection without warning you
+   </message>
+   <!-- Skills Settings Page -->
+   <message name="IDS_SETTINGS_SKILLS_SETTING_LABEL" desc="Label for the Skills setting entry point in Settings > AI page.">
+-    Skills in Chromium
++    Skills in Aster
+   </message>
+   <message name="IDS_SETTINGS_SKILLS_TOGGLE_LABEL" desc="Label for the toggle button on the Skills settings subpage.">
+-    Enable Skills in Chromium
++    Enable Skills in Aster
+   </message>
+   <message name="IDS_SETTINGS_SYNC_SKILLS_SEPARATE_INFORMATION" desc="Info text on the Sync page explaining that skills are managed separately from sync.">
+-    AI innovations like skills are saved to your Google Account and managed separately from Chromium sync
++    AI innovations like skills are saved to your Google Account and managed separately from Aster sync
+   </message>
+   <message name="IDS_SETTINGS_SKILLS_WHEN_ON_BULLET_TWO" desc="Second bullet point under the 'When on' column in the Skills settings page.">
+-    Use them alongside other Gemini features in Chromium
++    Use them alongside other Gemini features in Aster
+   </message>
+ </grit-part>
 diff --git a/chrome/app/theme/chromium/BRANDING b/chrome/app/theme/chromium/BRANDING
-index f8363d5b29..731211dedc 100644
+index f8363d5b29..c3d9a53b78 100644
 --- a/chrome/app/theme/chromium/BRANDING
 +++ b/chrome/app/theme/chromium/BRANDING
 @@ -1,10 +1,10 @@
@@ -2931,16 +3630,13 @@ index f8363d5b29..731211dedc 100644
 -PRODUCT_INSTALLER_SHORTNAME=Chromium Installer
 -COPYRIGHT=Copyright @LASTCHANGE_YEAR@ The Chromium Authors. All rights reserved.
 -MAC_BUNDLE_ID=org.chromium.Chromium
-+COMPANY_FULLNAME=Aster Browser Team
++COMPANY_FULLNAME=Aster Team
 +COMPANY_SHORTNAME=Aster Team
 +PRODUCT_FULLNAME=Aster Browser
 +PRODUCT_SHORTNAME=Aster
 +PRODUCT_INSTALLER_FULLNAME=Aster Installer
 +PRODUCT_INSTALLER_SHORTNAME=Aster Installer
-+COPYRIGHT=Copyright 2026 Aster Browser Team. All rights reserved.
++COPYRIGHT=Copyright 2026 Aster Team. All rights reserved.
 +MAC_BUNDLE_ID=com.aster-browser
  MAC_CREATOR_CODE=Cr24
  MAC_TEAM_ID=
--- 
-2.54.0.windows.1
-
