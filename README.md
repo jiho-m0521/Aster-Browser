@@ -16,14 +16,6 @@ the current Windows build flow.
 - Maintainer: [Aster Team](https://github.com/jiho-m0521/Aster-Browser)
 - Upstream base: [Chromium](https://www.chromium.org/)
 
-## What This Includes
-
-- Product identity changed from Chromium to Aster.
-- Browser-facing settings and About strings updated to Aster.
-- Product metadata updated to `Aster Team`.
-- About copyright updated to `Copyright 2026 Aster Team. All rights reserved.`
-- A maintained patch file at [`patches/0001-rename-branding.patch`](patches/0001-rename-branding.patch).
-
 ## Build Notes
 
 The working Chromium checkout used for this patch is expected at:
