@@ -80,6 +80,8 @@ The patch set currently applies:
 - Windows AppUserModelID/install identity: `Aster`
 - Startup Google API key warning: disabled for Aster builds
 - Settings About logo click animation: disabled
+- Default new tab page: replaced with the Aster dashboard from `C:\aster-ntp`
+  and packaged as `chrome://new-tab-page` resources
 
 ## Verification
 
